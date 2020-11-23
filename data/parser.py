@@ -105,26 +105,3 @@ clean.request_df = pd.DataFrame()
 for f in input_files:
     clean(f)
 clean.request_df.to_csv(OUTPUT_DIR+'request.csv',header=False,sep='\t',float_format='%.f')
-
-import psycopg2
-
-# Connect to an existing database
-conn = psycopg2.connect("dbname=311CI user=postgres password=pass")
-
-# Open a cursor to perform database operations
-cur = conn.cursor()
-
-# Truncate table
-cur.execute('TRUNCATE TABLE test;')
-
-# Copy csv to PostgreSQL table
-with open('./out/test.csv','rb') as f:
-    print(cur.copy_from(f, 'test',null=''))
-
-# Make the changes to the database persistent
-conn.commit()
-
-# Close communication with the database
-cur.close()
-conn.close()
-
