@@ -28,8 +28,7 @@ def clean(filename):
         '311-service-requests-tree-debris.csv': 'tree_debris_request.csv',
         '311-service-requests-tree-trims.csv': 'tree_trim_request.csv'
     }
-    
-    
+
     # Columns that exist in all csv files
     common_columns = [
         'Creation Date',
@@ -55,7 +54,7 @@ def clean(filename):
     df = df[~df.duplicated()]
 
     # Rename zip column (applies only on '311-service-requests-pot-holes-reported.csv')
-    df.rename(columns = {'ZIP':'Zip Code'},inplace=True)
+    df.rename(columns={'ZIP': 'Zip Code'},inplace=True)
     
     # Change header case (in some .csv files header is uppercased)
     df.columns = map(str.title, df.columns)
