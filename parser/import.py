@@ -8,13 +8,13 @@ conn = psycopg2.connect("dbname=311CI user=postgres password=pass")
 cur = conn.cursor()
 
 # Truncate table
-cur.execute('TRUNCATE TABLE test;')
+cur.execute('TRUNCATE TABLE request;')
 
 DIR = './out/'
-input_files = [DIR+f for f in os.listdir(DIR) if f.endswith('.csv')]
+files = [DIR+f for f in os.listdir(DIR) if f.endswith('.csv')]
 
 # Copy each csv to the respective PostgreSQL table
-for fname in input_files:
+for fname in files:
     with open(fname,'rb') as f:
         relation = fname.replace(DIR,'').replace('.csv','')
         print('Importing to '+relation+'...')
