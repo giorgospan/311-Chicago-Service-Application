@@ -14,7 +14,6 @@ public class Request {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long requestId;
-
     private Timestamp creationDate;
     private String status;
     private Timestamp completionDate;

@@ -13,6 +13,53 @@ def clean(filename):
     print("="*len(filename))
     print()
 
+    new_column_names = {
+
+        # Common
+        'Street Address' : 'street_address',
+        'Creation Date' : 'creation_date',
+        'Completion Date' : 'completion_date',
+        'Status' : 'status',
+        'Service Request Number' : 'request_number',
+        'Street Address' : 'street_address',
+        'Zip Code' : 'zip_code',
+        'Zip Codes' : 'zip_codes',
+        'Ward' : 'ward',
+        'Wards' : 'wards',
+        'Location' : 'location',
+        'Historical Wards 2003-2015' : 'historical_wards',
+        'Community Area' : 'community_area',
+        'Community Areas' : 'community_areas',
+        'Census Tracts' : 'census_tracts',
+        'Police District' : 'police_district',
+        'Type Of Service Request' : 'request_type',
+        'Latitude' : 'latitude',
+        'Longitude' : 'longitude',
+        'X Coordinate' : 'x_coordinate',
+        'Y Coordinate' : 'y_coordinate',
+
+        # RequestType-specific
+        'Current Activity' : 'current_activity',
+        'Most Recent Action' : 'most_recent_action',
+        'Zip':'zip_code',
+        'Ssa' : 'ssa',
+        'License Plate' : 'license_plate',
+        'Vehicle Color' : 'vehicle_color',
+        'Vehicle Make/Model' : 'vehicle_model',
+        'How Many Days Has The Vehicle Been Reported As Parked?' : 'days_parked',
+        'Number Of Black Carts Delivered': 'num_of_black_carts',
+        'What Type Of Surface Is The Graffiti On?' : 'graffiti_surface',
+        'Where Is The Graffiti Located?' : 'graffiti_location',
+        'Number Of Potholes Filled On Block' : 'potholes_filled',
+        'Number Of Premises Baited' : 'premises_baited',
+        'Number Of Premises With Garbage' : 'premises_with_garbage',
+        'Number Of Premises With Rats': 'premises_with_rats',
+        'What Is The Nature Of This Code Violation?' : 'nature',
+        'If Yes, Where Is The Debris Located?' : 'debris_location',
+        'Location Of Trees' : 'tree_location'
+
+    }
+
     # Output filenames (they correspond to relation names)
     outnames={
         '311-service-requests-abandoned-vehicles.csv': 'vehicle_request.csv',
@@ -31,47 +78,48 @@ def clean(filename):
 
     # Columns that exist in all csv files
     common_columns = [
-        'Street Address',
-        'Creation Date',
-        'Completion Date',
-        'Status',
-        'Service Request Number',
-        'Street Address',
-        'Zip Code',
-        'Zip Codes',
-        'Ward',
-        'Wards',
-        'Location',
-        'Historical Wards 2003-2015',
-        'Community Area',
-        'Community Areas',
-        'Census Tracts',
-        'Police District',
-        'Type Of Service Request',
-        'Latitude',
-        'Longitude',
-        'X Coordinate',
-        'Y Coordinate'
-    ]
+        'request_id',
+        'street_address',
+        'creation_date',
+        'completion_date',
+        'status',
+        'request_number',
+        'zip_code',
+        'zip_codes',
+        'ward',
+        'wards',
+        'location',
+        'historical_wards',
+        'community_area',
+        'community_areas',
+        'census_tracts',
+        'police_district',
+        'request_type',
+        'latitude',
+        'longitude',
+        'x_coordinate',
+        'y_coordinate']
 
     # Remove duplicate rows
     df = df[~df.duplicated()]
 
-    # Rename zip column (applies only on '311-service-requests-pot-holes-reported.csv')
-    df.rename(columns = {'ZIP':'Zip Code'},inplace=True)
-
-    # Change header case (in some .csv files header is uppercased)
+    # Rename column names to match column names in our DB
     df.columns = map(str.title, df.columns)
+    df.rename(columns = new_column_names,inplace=True)
+
+    # Drop location column [redundant]
+    df.drop(columns=['location'],inplace=True)
+
 
     # Remove 'T' from dates
-    df['Creation Date'] = df['Creation Date'].str.replace('T',' ')
-    df['Completion Date'] = df['Completion Date'].str.replace('T',' ')
+    df['creation_date'] = df['creation_date'].str.replace('T',' ')
+    df['completion_date'] = df['completion_date'].str.replace('T',' ')
 
     # Applies only on './data/311-service-requests-street-lights-one-out.csv'
-    df['Type Of Service Request'] = df['Type Of Service Request'].str.replace('Street Light Out','Street Light - 1/Out')
+    df['request_type'] = df['request_type'].str.replace('Street Light Out','Street Light - 1/Out')
 
     # Applies only on './data/311-service-requests-pot-holes-reported.csv'
-    df['Type Of Service Request'] = df['Type Of Service Request'].str.replace('Pot Hole in Street','Pothole in Street')
+    df['request_type'] = df['request_type'].str.replace('Pot Hole in Street','Pothole in Street')
 
     # Change index
     df.reset_index(drop=True, inplace=True)
@@ -80,15 +128,20 @@ def clean(filename):
     # Increment starting position for the next call
     clean.start_pos+=df.shape[0]
 
+    # Make index one of the columns with name 'request_id'
+    df['request_id'] = df.index
+
     # Create csv with specific columns for this request type [i.e.: exclude common columns]
-    current_df = df[df.columns[~df.columns.isin(common_columns)]].sort_index(axis=1)
-    current_df .to_csv(OUTPUT_DIR+outnames[filename],header=False,sep='\t',float_format='%.f')
+    current_df = df[df.columns[~df.columns.isin([c for c in common_columns if c != 'request_id'])]]
+    current_df = current_df[sorted([c for c in current_df.columns.to_list() if c != 'request_id']) + ['request_id']]
+    current_df.to_csv(OUTPUT_DIR+outnames[filename],header=False,index=False,sep='\t',float_format='%.f')
 
     # Keep only common columns
     df = df[df.columns[df.columns.isin(common_columns)]]
 
     # Append rows to request_df
     clean.request_df = clean.request_df.append(df)
+
 
 INPUT_DIR = './data/'
 OUTPUT_DIR = './out/'
@@ -113,5 +166,6 @@ for f in input_files:
     clean(f)
 
 # Produce general request.csv
-clean.request_df.sort_index(axis=1,inplace=True)
-clean.request_df.to_csv(OUTPUT_DIR+'request.csv',header=False,sep='\t',float_format='%.f')
+df = clean.request_df
+df = df[['request_id']+sorted([a for a in df.columns.to_list() if a != 'request_id'])]
+df.to_csv(OUTPUT_DIR+'request.csv',header=False,index=False,sep='\t',float_format='%.f')
