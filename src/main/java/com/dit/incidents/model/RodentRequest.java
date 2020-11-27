@@ -10,7 +10,7 @@ public class RodentRequest extends Request{
 
     private String currentActivity;
     private String mostRecentAction;
-    private Short premisesBaited;
-    private Short premisesWithGarbage;
-    private Short premisesWithRats;
+    private Integer premisesBaited;
+    private Integer premisesWithGarbage;
+    private Integer premisesWithRats;
 }

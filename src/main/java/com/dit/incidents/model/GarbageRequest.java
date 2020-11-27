@@ -8,9 +8,8 @@ import javax.persistence.PrimaryKeyJoinColumn;
 @PrimaryKeyJoinColumn(name = "requestId")
 public class GarbageRequest extends Request{
 
-    private String location;
     private String currentActivity;
     private String mostRecentAction;
-    private Short numOfBlackCarts;
-    private Short ssa;
+    private Long numOfBlackCarts;
+    private Integer ssa;
 }

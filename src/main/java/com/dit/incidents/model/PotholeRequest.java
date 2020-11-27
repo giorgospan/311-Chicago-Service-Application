@@ -10,6 +10,6 @@ public class PotholeRequest extends Request {
 
     private String currentActivity;
     private String mostRecentAction;
-    private Short potholesFilled;
-    private Short ssa;
+    private Integer potholesFilled;
+    private Integer ssa;
 }

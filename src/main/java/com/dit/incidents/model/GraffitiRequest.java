@@ -7,7 +7,7 @@ import javax.persistence.PrimaryKeyJoinColumn;
 @PrimaryKeyJoinColumn(name = "requestId")
 public class GraffitiRequest extends  Request{
 
-    private Short ssa;
+    private Integer ssa;
     private String graffitiSurface;
     private String graffitiLocation;
 
