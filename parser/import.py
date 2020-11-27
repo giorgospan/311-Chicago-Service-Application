@@ -16,10 +16,10 @@ files = [DIR+f for f in os.listdir(DIR) if f.endswith('.csv')]
 # Copy each csv to the respective PostgreSQL table
 for fname in files:
     with open(fname,'rb') as f:
-        relation = fname.replace(DIR,'').replace('.csv','')
+        relation = fname.replace(DIR, '').replace('.csv', '')
         print('Importing to '+relation+'...')
         print()
-        cur.copy_from(f, relation,null='')
+        cur.copy_from(f, relation, null='')
 
 # Make the changes to the database persistent
 conn.commit()

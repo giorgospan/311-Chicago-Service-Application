@@ -33,7 +33,7 @@ build/
 .vscode/
 
 
-### Ignore everything in data except for py files ###
+### Ignore everything in parser dir except for .py files ###
 /parser/*
 !/parser/*.py
 

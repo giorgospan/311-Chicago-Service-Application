@@ -1,0 +1,11 @@
+package com.dit.incidents.model;
+
+import javax.persistence.Entity;
+import javax.persistence.PrimaryKeyJoinColumn;
+
+@Entity
+@PrimaryKeyJoinColumn(name = "requestId")
+public class SanitationRequest extends Request{
+    private String nature;
+
+}
