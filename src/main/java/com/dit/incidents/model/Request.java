@@ -8,7 +8,6 @@ import java.sql.Time;
 import java.sql.Timestamp;
 
 @Entity
-@Inheritance(strategy = InheritanceType.JOINED)
 public class Request {
 
     @Id

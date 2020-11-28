@@ -1,15 +1,21 @@
 package com.dit.incidents.model;
 
-import javax.persistence.Entity;
-import javax.persistence.PrimaryKeyJoinColumn;
-
+import javax.persistence.*;
 
 @Entity
-@PrimaryKeyJoinColumn(name = "requestId")
-public class PotholeRequest extends Request {
+public class PotholeRequest{
+
+    @Id
+    private Long requestId;
 
     private String currentActivity;
     private String mostRecentAction;
     private Integer potholesFilled;
     private Integer ssa;
+
+    @OneToOne
+    @MapsId
+    @JoinColumn(name="request_id")
+    private Request request;
+
 }

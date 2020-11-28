@@ -1,9 +1,17 @@
 package com.dit.incidents.model;
 
-import javax.persistence.Entity;
-import javax.persistence.PrimaryKeyJoinColumn;
+import javax.persistence.*;
 
 @Entity
-@PrimaryKeyJoinColumn(name = "requestId")
-public class LightsAllRequest extends Request{
+public class LightsAllRequest{
+
+	@Id
+	private Long requestId;
+
+
+	@OneToOne
+	@MapsId
+	@JoinColumn(name="request_id")
+	private Request request;
+
 }
