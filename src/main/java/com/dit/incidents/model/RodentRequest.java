@@ -1,16 +1,23 @@
 package com.dit.incidents.model;
 
 
-import javax.persistence.Entity;
-import javax.persistence.PrimaryKeyJoinColumn;
+import javax.persistence.*;
 
 @Entity
-@PrimaryKeyJoinColumn(name = "requestId")
-public class RodentRequest extends Request{
+public class RodentRequest{
+
+    @Id
+    private Long requestId;
 
     private String currentActivity;
     private String mostRecentAction;
     private Integer premisesBaited;
     private Integer premisesWithGarbage;
     private Integer premisesWithRats;
+
+    @OneToOne
+    @MapsId
+    @JoinColumn(name="request_id")
+    private Request request;
+
 }

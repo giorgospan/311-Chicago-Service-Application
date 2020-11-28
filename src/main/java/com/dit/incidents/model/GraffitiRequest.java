@@ -1,14 +1,20 @@
 package com.dit.incidents.model;
 
-import javax.persistence.Entity;
-import javax.persistence.PrimaryKeyJoinColumn;
+import javax.persistence.*;
 
 @Entity
-@PrimaryKeyJoinColumn(name = "requestId")
-public class GraffitiRequest extends  Request{
+public class GraffitiRequest{
 
-    private Integer ssa;
+	@Id
+	private Long requestId;
+
+	private Integer ssa;
     private String graffitiSurface;
     private String graffitiLocation;
+
+	@OneToOne
+	@MapsId
+	@JoinColumn(name="request_id")
+	private Request request;
 
 }

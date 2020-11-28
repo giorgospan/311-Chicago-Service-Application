@@ -1,13 +1,20 @@
 package com.dit.incidents.model;
 
-import javax.persistence.Entity;
-import javax.persistence.PrimaryKeyJoinColumn;
+import javax.persistence.*;
 
 @Entity
-@PrimaryKeyJoinColumn(name = "requestId")
-public class TreeDebrisRequest extends Request{
+public class TreeDebrisRequest{
+
+    @Id
+    private Long requestId;
 
     private String currentActivity;
     private String mostRecentAction;
     private String debrisLocation;
+
+    @OneToOne
+    @MapsId
+    @JoinColumn(name="request_id")
+    private Request request;
+
 }

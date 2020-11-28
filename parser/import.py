@@ -2,10 +2,6 @@ import os
 import psycopg2
 
 # Connect to an existing database
-# giorgospan
-# conn = psycopg2.connect("dbname=311CI user=postgres password=pass")
-
-# geooo109
 conn = psycopg2.connect("dbname='311CI' user='postgres' host='localhost' password='pass'")
 
 # Open a cursor to perform database operations
@@ -23,12 +19,12 @@ with open(fname,'rb') as f:
     cur.execute(SQL)
 
 # Copy every other csv to the respective PostgreSQL table
-for fname in [x for x in input_files if x != DIR+'request.csv']:
-    with open(fname,'rb') as f:
-        relation = fname.replace(DIR,'').replace('.csv','')
-        cur.execute('TRUNCATE TABLE '+relation+' CASCADE;')
-        SQL = "COPY {} FROM '{}' CSV QUOTE '\"';".format(relation,os.path.abspath(fname))
-        cur.execute(SQL)
+# for fname in [x for x in input_files if x != DIR+'request.csv']:
+#     with open(fname,'rb') as f:
+#         relation = fname.replace(DIR,'').replace('.csv','')
+#         cur.execute('TRUNCATE TABLE '+relation+' CASCADE;')
+#         SQL = "COPY {} FROM '{}' CSV QUOTE '\"';".format(relation,os.path.abspath(fname))
+#         cur.execute(SQL)
 
 # Make the changes to the database persistent
 conn.commit()

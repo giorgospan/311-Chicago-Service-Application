@@ -44,6 +44,7 @@
                 </exclusion>
             </exclusions>
         </dependency>
+
         <dependency>
             <groupId>net.postgis</groupId>
             <artifactId>postgis-jdbc</artifactId>
