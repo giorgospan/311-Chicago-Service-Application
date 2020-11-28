@@ -31,7 +31,7 @@ public class UserReg {
     @JoinTable(
             name = "user_roles",
             joinColumns = @JoinColumn(name = "USER_REG_ID", referencedColumnName = "USER_REG_ID"),
-            inverseJoinColumns = @JoinColumn(name = "ROLE_ID", referencedColumnName = "USER_REG_ID")
+            inverseJoinColumns = @JoinColumn(name = "ROLE_ID", referencedColumnName = "ROLE_ID")
     )
     private Set<Role> roles = new HashSet<>();
 
