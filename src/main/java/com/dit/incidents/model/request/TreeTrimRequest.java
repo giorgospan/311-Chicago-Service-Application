@@ -3,7 +3,7 @@ package com.dit.incidents.model.request;
 
 import javax.persistence.*;
 
-@Entity(name = "TREE_TRI_REQUEST")
+@Entity(name = "TREE_TRIM_REQUEST")
 public class TreeTrimRequest{
 
     @Id

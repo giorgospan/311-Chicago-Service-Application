@@ -138,17 +138,14 @@ def clean(filename):
 
     # Create csv with specific columns for this request type [i.e.: exclude common columns]
     current_df = df[df.columns[~df.columns.isin([c for c in common_columns if c != 'request_id'])]]
-    current_df = current_df[sorted([c for c in current_df.columns.to_list() if c != 'request_id']) + ['request_id']]
-    current_df.to_csv(OUTPUT_DIR+outnames[filename],header=False,index=False,float_format='%.f')
+    current_df = current_df[['request_id']+sorted([a for a in current_df.columns.to_list() if a != 'request_id'])]
+    current_df.to_csv(OUTPUT_DIR+outnames[filename],index=False,header=False,float_format='%.f')
 
     # Keep only common columns
     df = df[df.columns[df.columns.isin(common_columns)]]
 
     # Append rows to request_df
     clean.request_df = clean.request_df.append(df)
-
-    return current_df
-
 
 
 INPUT_DIR = './data/'
@@ -171,7 +168,7 @@ for f in glob.glob(OUTPUT_DIR+'*'):
 clean.start_pos = 0
 clean.request_df = pd.DataFrame()
 for f in input_files:
-    lol = clean(f)
+    clean(f)
 
 # Produce general request.csv
 df = clean.request_df

@@ -61,16 +61,16 @@ public class Request {
     @Column(name = "WARDS")
     private Integer wards;
 
-    @Column(name = "X_COORDINATE", precision = 10, scale = 6)
+    @Column(name = "X_COORDINATE", precision = 13, scale = 3)
     private BigDecimal xCoordinate;
 
-    @Column(name = "Y_COORDINATE", precision = 10, scale = 6)
+    @Column(name = "Y_COORDINATE", precision = 13, scale = 3)
     private BigDecimal yCoordinate;
 
-    @Column(name = "LATITUDE", precision = 10, scale = 6)
+    @Column(name = "LATITUDE", precision = 13, scale = 3)
     private BigDecimal latitude;
 
-    @Column(name = "LONGITUDE", precision = 10, scale = 6)
+    @Column(name = "LONGITUDE", precision = 13, scale = 3)
     private Double longitude;
 
     public Request() {

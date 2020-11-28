@@ -15,7 +15,7 @@ public class VehicleRequest{
     @Column(name = "RECENT_ACTION")
     private String recentAction;
 
-    @Column(name = "PAYS_PARKED")
+    @Column(name = "DAYS_PARKED")
     private String daysParked;
 
     @Column(name = "LICENCE_PLATE")

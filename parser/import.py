@@ -19,12 +19,17 @@ with open(fname,'rb') as f:
     cur.execute(SQL)
 
 # Copy every other csv to the respective PostgreSQL table
-# for fname in [x for x in input_files if x != DIR+'request.csv']:
-#     with open(fname,'rb') as f:
-#         relation = fname.replace(DIR,'').replace('.csv','')
-#         cur.execute('TRUNCATE TABLE '+relation+' CASCADE;')
-#         SQL = "COPY {} FROM '{}' CSV QUOTE '\"';".format(relation,os.path.abspath(fname))
-#         cur.execute(SQL)
+for fname in [x for x in input_files if x != DIR+'request.csv']:
+    with open(fname,'rb') as f:
+        relation = fname.replace(DIR,'').replace('.csv','')
+        cur.execute('TRUNCATE TABLE '+relation+' CASCADE;')
+        SQL = "COPY {} FROM '{}' CSV QUOTE '\"';".format(relation,os.path.abspath(fname))
+        cur.execute(SQL)
+        msg  = "Imported " + fname +  " to relation " + relation
+        print("="*len(msg))
+        print(msg)
+        print("="*len(msg))
+        print()
 
 # Make the changes to the database persistent
 conn.commit()
