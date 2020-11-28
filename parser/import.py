@@ -2,7 +2,11 @@ import os
 import psycopg2
 
 # Connect to an existing database
-conn = psycopg2.connect("dbname=311CI user=postgres password=pass")
+# giorgospan
+# conn = psycopg2.connect("dbname=311CI user=postgres password=pass")
+
+# geooo109
+conn = psycopg2.connect("dbname='311CI' user='postgres' host='localhost' password='pass'")
 
 # Open a cursor to perform database operations
 cur = conn.cursor()
