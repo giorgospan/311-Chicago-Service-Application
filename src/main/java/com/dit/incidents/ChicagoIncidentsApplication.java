@@ -1,6 +1,7 @@
 package com.dit.incidents;
 
 import com.dit.incidents.model.request.Request;
+import com.dit.incidents.model.response.Response1;
 import com.dit.incidents.repository.RequestRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -25,13 +26,19 @@ public class ChicagoIncidentsApplication implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
 
-        // Testing query 1 [Note that dates in our DB are stored with format "yyyy-mm-dd"]
-//        DateFormat dateFormat = new SimpleDateFormat("yyyy-mm-dd");
-//        Timestamp from = new Timestamp(dateFormat.parse("2018-12-12").getTime());
-//        Timestamp to = new Timestamp(dateFormat.parse("2019-12-12").getTime());
+        DateFormat dateFormat = new SimpleDateFormat("yyyy-mm-dd");
+        Timestamp from = new Timestamp(dateFormat.parse("2000-12-12").getTime());
+        Timestamp to = new Timestamp(dateFormat.parse("2019-12-12").getTime());
+        String givenType = "Abandoned Vehicle Complaint";
+
+        // Query 1
 //        List<Request> results =  requestRepository.findAllByCreationDateBetweenOrderByCreationDateDesc(from,to);
-//
 //        System.out.println("Returned " + results.size() + " results between " + from.toString() + " and " + to.toString());
+
+
+        // Query 2
+//        List<Response1> results  = requestRepository.countPerDayBetweenTimeRange(givenType,from,to);
+//        System.out.println("Returned: " + results.size());
 
     }
 }
