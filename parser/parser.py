@@ -98,6 +98,7 @@ def clean(filename):
         'latitude',
         'longitude',
         'x_coordinate',
+        'user_reg_id',
         'y_coordinate']
 
     # Remove duplicate rows
@@ -125,6 +126,8 @@ def clean(filename):
     if 'license_plate' in df.columns:
         df['license_plate']  = df[df['license_plate'].str.len() < 10]['license_plate']
 
+    # Add user id column
+    df["user_reg_id"] = ""
 
     # Change index
     df.reset_index(drop=True, inplace=True)
@@ -172,5 +175,7 @@ for f in input_files:
 
 # Produce general request.csv
 df = clean.request_df
-df = df[['request_id']+sorted([a for a in df.columns.to_list() if a != 'request_id'])]
+
+excluded_cols = ['request_id','user_reg_id']
+df = df[['request_id'] + sorted([a for a in df.columns.to_list() if a not in excluded_cols]) +['user_reg_id']]
 df.to_csv(OUTPUT_DIR+'request.csv',header=False,index=False,float_format='%.f')

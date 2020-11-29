@@ -1,5 +1,6 @@
 package com.dit.incidents.model.request;
 
+import com.dit.incidents.model.auth.UserReg;
 import org.postgis.Point;
 
 import javax.persistence.*;
@@ -7,6 +8,8 @@ import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.sql.Time;
 import java.sql.Timestamp;
+import java.util.Date;
+
 
 @Entity(name = "REQUEST")
 public class Request {
@@ -15,6 +18,11 @@ public class Request {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "REQUEST_ID")
     private Long id;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name="USER_REG_ID", nullable=true)
+    private UserReg userReg;
+
 
     @Column(name = "CREATION_DATE")
     private Timestamp creationDate;
@@ -279,5 +287,13 @@ public class Request {
 
     public void setLongitude(Double longitude) {
         this.longitude = longitude;
+    }
+
+    public UserReg getUserReg() {
+        return userReg;
+    }
+
+    public void setUserReg(UserReg userReg) {
+        this.userReg = userReg;
     }
 }

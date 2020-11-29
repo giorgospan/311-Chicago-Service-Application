@@ -1,5 +1,7 @@
 package com.dit.incidents.model.auth;
 
+import com.dit.incidents.model.request.Request;
+
 import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
@@ -14,6 +16,9 @@ public class UserReg {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "USER_REG_ID")
     private Long id;
+
+    @OneToMany(mappedBy="userReg", fetch = FetchType.LAZY)
+    private Set<Request> requests;
 
     @Column(name = "USERNAME")
     private String username;
@@ -79,5 +84,17 @@ public class UserReg {
 
     public void setRoles(Set<Role> roles) {
         this.roles = roles;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public Set<Request> getRequests() {
+        return requests;
+    }
+
+    public void setRequests(Set<Request> requests) {
+        this.requests = requests;
     }
 }
