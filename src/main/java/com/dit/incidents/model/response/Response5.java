@@ -1,8 +1,7 @@
 package com.dit.incidents.model.response;
 
-public interface Response1 {
+public interface Response5 {
 
     String getRequestType();
-    Integer getTotalRequests();
-
+    Integer getTypeCount();
 }

@@ -75,16 +75,16 @@ public class Request {
     @Column(name = "Y_COORDINATE", precision = 13, scale = 3)
     private BigDecimal yCoordinate;
 
-    @Column(name = "LATITUDE", precision = 13, scale = 3)
+    @Column(name = "LATITUDE", precision = 20, scale = 17)
     private BigDecimal latitude;
 
-    @Column(name = "LONGITUDE", precision = 13, scale = 3)
-    private Double longitude;
+    @Column(name = "LONGITUDE", precision = 20, scale = 17)
+    private BigDecimal longitude;
 
     public Request() {
     }
 
-    public Request(Long id, Timestamp creationDate, String status, Timestamp completionDate, String requestNumber, String requestType, String streetAddress, String zipCode, Integer ward, Integer policeDistrict, Integer communityArea, Integer historicalWards, String zipCodes, Integer communityAreas, Integer censusTracts, Integer wards, BigDecimal xCoordinate, BigDecimal yCoordinate, BigDecimal latitude, Double longitude) {
+    public Request(Long id, Timestamp creationDate, String status, Timestamp completionDate, String requestNumber, String requestType, String streetAddress, String zipCode, Integer ward, Integer policeDistrict, Integer communityArea, Integer historicalWards, String zipCodes, Integer communityAreas, Integer censusTracts, Integer wards, BigDecimal xCoordinate, BigDecimal yCoordinate, BigDecimal latitude, BigDecimal longitude) {
         this.id = id;
         this.creationDate = creationDate;
         this.status = status;
@@ -107,7 +107,7 @@ public class Request {
         this.longitude = longitude;
     }
 
-    public Request(Timestamp creationDate, String status, Timestamp completionDate, String requestNumber, String requestType, String streetAddress, String zipCode, Integer ward, Integer policeDistrict, Integer communityArea, Integer historicalWards, String zipCodes, Integer communityAreas, Integer censusTracts, Integer wards, BigDecimal xCoordinate, BigDecimal yCoordinate, BigDecimal latitude, Double longitude) {
+    public Request(Timestamp creationDate, String status, Timestamp completionDate, String requestNumber, String requestType, String streetAddress, String zipCode, Integer ward, Integer policeDistrict, Integer communityArea, Integer historicalWards, String zipCodes, Integer communityAreas, Integer censusTracts, Integer wards, BigDecimal xCoordinate, BigDecimal yCoordinate, BigDecimal latitude, BigDecimal longitude) {
         this.creationDate = creationDate;
         this.status = status;
         this.completionDate = completionDate;
@@ -281,11 +281,11 @@ public class Request {
         this.latitude = latitude;
     }
 
-    public Double getLongitude() {
+    public BigDecimal getLongitude() {
         return longitude;
     }
 
-    public void setLongitude(Double longitude) {
+    public void setLongitude(BigDecimal longitude) {
         this.longitude = longitude;
     }
 

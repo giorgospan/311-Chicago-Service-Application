@@ -1,8 +1,6 @@
 package com.dit.incidents.model.response;
 
-public interface Response1 {
-
+public interface Response3 {
     String getRequestType();
-    Integer getTotalRequests();
-
+    String getZipCode();
 }

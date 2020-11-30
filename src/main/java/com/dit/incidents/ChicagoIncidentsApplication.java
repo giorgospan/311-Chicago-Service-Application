@@ -1,7 +1,5 @@
 package com.dit.incidents;
 
-import com.dit.incidents.model.request.Request;
-import com.dit.incidents.model.response.Response1;
 import com.dit.incidents.repository.RequestRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -11,7 +9,6 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import java.sql.Timestamp;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
-import java.util.List;
 
 @SpringBootApplication
 public class ChicagoIncidentsApplication implements CommandLineRunner {

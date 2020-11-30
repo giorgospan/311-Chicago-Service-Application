@@ -126,6 +126,9 @@ def clean(filename):
     if 'license_plate' in df.columns:
         df['license_plate']  = df[df['license_plate'].str.len() < 10]['license_plate']
 
+    df['longitude'] = df['longitude'].map(lambda x: '%20.17f' % x)
+    df['latitude'] = df['latitude'].map(lambda x: '%20.17f' % x)
+
     # Add user id column
     df["user_reg_id"] = ""
 
