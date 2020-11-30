@@ -19,7 +19,7 @@ import java.util.Date;
 import java.util.List;
 
 /*
- * Endpoints of the queries are in the form of : '/app/queryK, K = [1,...,12] (Use Get)
+ * Endpoints of the queries are in the form of : '/app/queryId, id = [1,...,12] (Use Get)
  */
 @RestController
 @RequestMapping("/app")
