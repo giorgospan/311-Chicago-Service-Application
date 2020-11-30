@@ -1,15 +1,12 @@
 package com.dit.incidents.model.request;
 
 import com.dit.incidents.model.auth.UserReg;
-import org.postgis.Point;
+import org.hibernate.annotations.CreationTimestamp;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
-import java.math.BigInteger;
-import java.sql.Time;
 import java.sql.Timestamp;
-import java.util.Date;
-
 
 @Entity(name = "REQUEST")
 public class Request {
@@ -23,14 +20,16 @@ public class Request {
     @JoinColumn(name="USER_REG_ID", nullable=true)
     private UserReg userReg;
 
-
     @Column(name = "CREATION_DATE")
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    @CreationTimestamp
     private Timestamp creationDate;
 
     @Column(name = "STATUS")
     private String status;
 
     @Column(name = "COMPLETION_DATE")
+    @DateTimeFormat(pattern="yyyy-MM-dd HH:mm:ss")
     private Timestamp completionDate;
 
     @Column(name = "REQUEST_NUMBER")

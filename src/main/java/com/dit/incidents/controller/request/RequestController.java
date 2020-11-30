@@ -1,20 +1,14 @@
 package com.dit.incidents.controller.request;
 
+import com.dit.incidents.external_request.request.ExternalRequest;
 import com.dit.incidents.response.*;
 import com.dit.incidents.service.request.RequestService;
-import org.apache.coyote.Response;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.sql.Timestamp;
-import java.text.DateFormat;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
@@ -28,8 +22,7 @@ public class RequestController {
     @Autowired
     private RequestService requestService;
 
-    private static final SimpleDateFormat sdf = new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss");
-
+    // ============= The following calls are for querying data for requests ==============
     /*
      * Query 1
      * Find the total requests per type that were created within a specified time range and sort
@@ -164,18 +157,20 @@ public class RequestController {
         return ResponseEntity.ok(new ApiResponse(true, "Query 12 succeed", response12List));
     }
 
-    // TODO : remove the following in the final version (only for testing)
-    @GetMapping("/test")
-    public List<Response12> foo() throws ParseException {
-        DateFormat dateFormat = new SimpleDateFormat("yyyy-mm-dd");
-        Timestamp from = new Timestamp(dateFormat.parse("2000-01-12").getTime());
-        Timestamp to = new Timestamp(dateFormat.parse("2019-01-12").getTime());
-        Timestamp t1 = new Timestamp(dateFormat.parse("2018-12-13").getTime());
-        String givenType = "Abandoned Vehicle Complaint";
-//        System.out.println(sdf.format(t1));
-//        System.out.println(r.get(0).getClass());
-//        return r;
-        return  null;
+    /* TODO
+     * Specific zip-code
+     */
+    @GetMapping("/queryZipCode")
+    public ResponseEntity<?> queryZipCode(@RequestParam("zipCode") String zipCode) {
+        return null;
+    }
+
+    /* TODO
+     * Specific street
+     */
+    @GetMapping("/queryStreetAddress")
+    public ResponseEntity<?> queryStreetAddress(@RequestParam("streetAddress") String streetAddress) {
+        return null;
     }
 
 }

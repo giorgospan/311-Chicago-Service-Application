@@ -1,7 +1,7 @@
-package com.dit.incidents.controller.auth;
+package com.dit.incidents.controller.logging;
 
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-public class UserController {
+public class LoggingController {
 }
