@@ -1,7 +1,7 @@
-package com.dit.incidents.repository;
+package com.dit.incidents.repository.request;
 
 import com.dit.incidents.model.request.Request;
-import com.dit.incidents.model.response.*;
+import com.dit.incidents.response.*;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
@@ -14,7 +14,6 @@ import java.util.List;
 @Repository
 public interface RequestRepository extends JpaRepository<Request,Long> {
 
-
     // Query 1
     @Query(value = "" +
             "select request_type as requestType, count(*) as totalRequests " +
@@ -22,8 +21,7 @@ public interface RequestRepository extends JpaRepository<Request,Long> {
             "where creation_date between ?1 and ?2 " +
             "group by request_type " +
             "order by totalRequests DESC", nativeQuery = true)
-    List<Response1> findTotalRequestsPerType(Timestamp t1, Timestamp t2);
-
+    List<Response1> findTotalRequestsPerType(@Param("from") Timestamp from, @Param("to") Timestamp to);
 
     // Query2
     @Query(value = "" +
@@ -33,8 +31,8 @@ public interface RequestRepository extends JpaRepository<Request,Long> {
             "group by 2 " +
             "order by 2 DESC ", nativeQuery = true)
     List<Response2> findTotalRequestsPerDayBetweenTimeRange(@Param("type") String givenType,
-                                                @Param("from") Timestamp t1,
-                                                @Param("to") Timestamp t2);
+                                                            @Param("from") Timestamp from,
+                                                            @Param("to") Timestamp to);
 
     // Query3
     @Query(value =
@@ -48,7 +46,7 @@ public interface RequestRepository extends JpaRepository<Request,Long> {
             "select requestType, zipCode " +
             "from cte_requests  " +
             "where row_num = 1", nativeQuery = true)
-    List<Response3> findMostCommonTypePerZipCode(Timestamp t);
+    List<Response3> findMostCommonTypePerZipCode(@Param("targetTm") Timestamp targetTm);
 
     // Query4
     @Query(value = "" +
@@ -56,8 +54,7 @@ public interface RequestRepository extends JpaRepository<Request,Long> {
             "from request " +
             "where date(creation_date) between ?1 and ?2 " +
             "group by request_type", nativeQuery = true)
-    List<Response4> findAvgCompletionTimePerType(Timestamp t1,Timestamp t2);
-
+    List<Response4> findAvgCompletionTimePerType(@Param("from") Timestamp from, @Param("to") Timestamp to);
 
     // Query5
     @Query(value = "" +
@@ -68,11 +65,13 @@ public interface RequestRepository extends JpaRepository<Request,Long> {
             "group by request_type " +
             "order by typeCount desc "
             ,nativeQuery = true)
-    List<Response5> findMostCommonTypeInBoundingBox(Double xMin, Double yMin, Double xMax, Double yMax, Date day);
+    List<Response5> findMostCommonTypeInBoundingBox(@Param("xMin") Double xMin, @Param("yMin")Double yMin,
+                                                    @Param("xMax") Double xMax, @Param("yMax") Double yMax,
+                                                    @Param("targetDt") Date targetDt);
 
     // Query6
     @Query(value = "select * from top_five_ssa(?1,?2) ", nativeQuery = true)
-    List<Response6> findTopFiveSsaPerDay(Timestamp t1,Timestamp t2);
+    List<Response6> findTopFiveSsaPerDay(@Param("from") Timestamp from, @Param("to") Timestamp to);
 
     // Query7
     @Query(value = "" +
@@ -98,23 +97,22 @@ public interface RequestRepository extends JpaRepository<Request,Long> {
     @Query(value = "" +
             "select request_id as requestId " +
             "from rodent_request " +
-            "where premises_baited < ?1",nativeQuery = true)
-    List<Response9> findRodentRequestsBaited(Integer num);
+            "where premises_baited < ?1", nativeQuery = true)
+    List<Response9> findRodentRequestsBaited(@Param("targetNum") Integer targetNum);
 
     // Query10
     @Query(value = "" +
             "select request_id as requestId " +
             "from rodent_request " +
             "where premises_with_garbage < ?1",nativeQuery = true)
-    List<Response10> findRodentRequestsGarbage(Integer num);
+    List<Response10> findRodentRequestsGarbage(@Param("targetNum") Integer targetNum);
 
     // Query11
     @Query(value = "" +
             "select request_id as requestId " +
             "from rodent_request " +
             "where premises_with_rats < ?1",nativeQuery = true)
-    List<Response11> findRodentRequestsRats(Integer num);
-
+    List<Response11> findRodentRequestsRats(@Param("targetNum") Integer targetNum);
 
     // Query12
     @Query(value = "" +
@@ -124,12 +122,12 @@ public interface RequestRepository extends JpaRepository<Request,Long> {
             "select request.request_id " +
             "from request inner join pothole_request on request.request_id = pothole_request.request_id " +
             "where potholes_filled > 1 and date(creation_date) = ?1 " +
-            ")as t " +
+            ") as t " +
             "where exists " +
             "( " +
             "select request.request_id " +
             "from request inner join rodent_request on request.request_id = rodent_request.request_id " +
             "where premises_baited > 1 and date(creation_date) = ?1" +
             ")", nativeQuery = true)
-    List<Response12> findPoliceDistricts(Date day);
+    List<Response12> findPoliceDistricts(@Param("targetDt") Date targetDt);
 }

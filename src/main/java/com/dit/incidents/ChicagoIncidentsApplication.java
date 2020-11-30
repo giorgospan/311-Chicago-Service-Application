@@ -1,6 +1,6 @@
 package com.dit.incidents;
 
-import com.dit.incidents.repository.RequestRepository;
+import com.dit.incidents.repository.request.RequestRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;

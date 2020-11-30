@@ -1,4 +1,4 @@
-package com.dit.incidents.model.response;
+package com.dit.incidents.response;
 
 public interface Response8 {
 
