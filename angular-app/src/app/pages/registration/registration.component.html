@@ -1,1 +1,26 @@
-<p>registration works!</p>
+<div class="container">
+  <div class="card card-container">
+<!--    <img id="profile-img" class="profile-img-card" src="//ssl.gstatic.com/accounts/ui/avatar_2x.png" />-->
+    <p id="profile-name" class="profile-name-card"></p>
+
+    <h3>Create an account</h3>
+
+    <form class="form-register">
+      <span id="reauth-email" class="reauth-email"></span>
+      <input type="text" id="inputUsername" class="form-control" placeholder="Username" required autofocus>
+      <input type="text" id="inputFirstName" class="form-control" placeholder="First Name" required autofocus>
+      <input type="text" id="inputLastName" class="form-control" placeholder="Last Name" required autofocus>
+      <input type="email" id="inputEmail" class="form-control" placeholder="Email" required autofocus>
+
+      <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
+      <input type="password" id="inputConfirmPassword" class="form-control" placeholder="Confirm Password" required>
+
+      <button class="btn btn-lg btn-primary btn-block btn-signin" type="submit">Register</button>
+    </form><!-- /form -->
+    <div class="existingAccount">
+        Already have an account?   <a href="/"> Sign in </a>
+    </div>
+
+  </div><!-- /card-container -->
+
+</div><!-- /container -->

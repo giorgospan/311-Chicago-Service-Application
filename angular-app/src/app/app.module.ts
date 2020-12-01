@@ -10,7 +10,6 @@ import { RegistrationComponent } from './pages/registration/registration.compone
 import { QueryComponent } from './pages/query/query.component';
 import { HeaderComponent } from './shared/header/header.component';
 import { FooterComponent } from './shared/footer/footer.component';
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 @NgModule({
   declarations: [
@@ -27,7 +26,6 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     BrowserModule,
     BrowserAnimationsModule,
     AlertModule,
-    FontAwesomeModule
   ],
   providers: [],
   bootstrap: [AppComponent]
