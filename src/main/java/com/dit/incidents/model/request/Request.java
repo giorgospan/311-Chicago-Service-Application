@@ -20,10 +20,10 @@ public class Request {
     private Long id;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name="USER_REG_ID", nullable=true)
+    @JoinColumn(name="USER_REG_ID", nullable = true)
     private UserReg userReg;
 
-    @Column(name = "CREATION_DATE")
+    @Column(name = "CREATION_DATE", nullable = false)
     @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     @CreationTimestamp
     private Timestamp creationDate;

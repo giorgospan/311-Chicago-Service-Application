@@ -1,5 +1,6 @@
 package com.dit.incidents.model.auth;
 
+import com.dit.incidents.model.log.Log;
 import com.dit.incidents.model.request.Request;
 
 import javax.persistence.*;
@@ -17,9 +18,6 @@ public class UserReg {
     @Column(name = "USER_REG_ID")
     private Long id;
 
-    @OneToMany(mappedBy="userReg", fetch = FetchType.LAZY)
-    private Set<Request> requests;
-
     @Column(name = "USERNAME")
     private String username;
 
@@ -29,9 +27,6 @@ public class UserReg {
     @Column(name = "password")
     private String password;
 
-    /*
-     * For all Users
-     */
     @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.MERGE)
     @JoinTable(
             name = "user_roles",
@@ -39,6 +34,12 @@ public class UserReg {
             inverseJoinColumns = @JoinColumn(name = "ROLE_ID", referencedColumnName = "ROLE_ID")
     )
     private Set<Role> roles = new HashSet<>();
+
+    @OneToMany(mappedBy="userReg", fetch = FetchType.LAZY)
+    private Set<Request> requests;
+
+    @OneToMany(mappedBy="userReg", fetch = FetchType.LAZY)
+    private Set<Log> logs;
 
     public UserReg() {
     }
