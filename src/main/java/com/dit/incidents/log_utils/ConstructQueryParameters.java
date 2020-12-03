@@ -1,5 +1,6 @@
 package com.dit.incidents.log_utils;
 
+import java.sql.Date;
 import java.sql.Timestamp;
 
 // Note: this implementation is not the best, we can do it dynamically and adaptive
@@ -20,7 +21,7 @@ public class ConstructQueryParameters {
     static final String NONE = "none";
     static final String TARGET_NUM = "targetNum:";
     static final String ZIP_CODE = "zipCode:";
-    static final String streetAddress = "streetAddress:";
+    static final String STREET_ADDRESS = "streetAddress:";
 
     public static String constructParamsQuery1(Timestamp from, Timestamp to) {
         return LEFT_DELIM + FROM + from.toString() + PARAMS_SPLITTER + TO + to.toString() + RIGHT_DELIM;
@@ -67,7 +68,7 @@ public class ConstructQueryParameters {
         return LEFT_DELIM + TARGET_NUM + targetNum.toString() + RIGHT_DELIM;
     }
 
-    public static String constructParamsQuery12(Timestamp targetTm) {
+    public static String constructParamsQuery12(Date targetTm) {
         return LEFT_DELIM + TARGET + targetTm.toString() + RIGHT_DELIM;
     }
 
@@ -80,10 +81,10 @@ public class ConstructQueryParameters {
     }
 
     public static String constructParamsQueryZipCode(String zipCode) {
-        return LEFT_DELIM + zipCode + RIGHT_DELIM;
+        return LEFT_DELIM + ZIP_CODE + zipCode + RIGHT_DELIM;
     }
 
     public static String constructParamsQueryStreetAddress(String streetAddress) {
-        return LEFT_DELIM + streetAddress + RIGHT_DELIM;
+        return LEFT_DELIM + STREET_ADDRESS + streetAddress + RIGHT_DELIM;
     }
 }

@@ -21,9 +21,6 @@ public class UserReg {
     @Column(name = "USERNAME")
     private String username;
 
-    @Column(name = "EMAIL")
-    private String email;
-
     @Column(name = "password")
     private String password;
 
@@ -44,9 +41,13 @@ public class UserReg {
     public UserReg() {
     }
 
-    public UserReg(String username, String email, String password, Set<Role> roles) {
+    public UserReg(String username, String password) {
         this.username = username;
-        this.email = email;
+        this.password = password;
+    }
+
+    public UserReg(String username, String password, Set<Role> roles) {
+        this.username = username;
         this.password = password;
         this.roles = roles;
     }
@@ -61,14 +62,6 @@ public class UserReg {
 
     public void setUsername(String username) {
         this.username = username;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
     }
 
     public String getPassword() {

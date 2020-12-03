@@ -18,7 +18,7 @@ public class Role {
     @Column(name = "ROLE_NAME")
     @Enumerated(EnumType.STRING)
     @NaturalId
-    private RoleName role;
+    private RoleName name;
 
     @ManyToMany(mappedBy = "roles", fetch = FetchType.LAZY, cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     private Set<UserReg>  userRegList = new HashSet<>();
@@ -26,8 +26,12 @@ public class Role {
     public Role() {
     }
 
-    public Role(RoleName role, Set<UserReg> userRegList) {
-        this.role = role;
+    public Role(RoleName name) {
+        this.name = name;
+    }
+
+    public Role(RoleName name, Set<UserReg> userRegList) {
+        this.name = name;
         this.userRegList = userRegList;
     }
 
@@ -35,12 +39,12 @@ public class Role {
         return id;
     }
 
-    public RoleName getRole() {
-        return role;
+    public RoleName getName() {
+        return name;
     }
 
-    public void setRole(RoleName role) {
-        this.role = role;
+    public void setRole(RoleName name) {
+        this.name = name;
     }
 
     public Set<UserReg> getUserRegList() {

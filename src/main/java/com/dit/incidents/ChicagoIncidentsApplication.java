@@ -1,6 +1,10 @@
 package com.dit.incidents;
 
+import com.dit.incidents.model.auth.Role;
+import com.dit.incidents.repository.auth.RoleRepository;
 import com.dit.incidents.repository.request.RequestRepository;
+import com.dit.incidents.service.auth.RoleService;
+import com.dit.incidents.service.auth.UserRegService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -14,7 +18,10 @@ import java.text.SimpleDateFormat;
 public class ChicagoIncidentsApplication implements CommandLineRunner {
 
     @Autowired
-    RequestRepository requestRepository;
+    private RoleService roleService;
+
+    @Autowired
+    private UserRegService userRegService;
 
     public static void main(String[] args) {
         SpringApplication.run(ChicagoIncidentsApplication.class, args);
@@ -23,19 +30,8 @@ public class ChicagoIncidentsApplication implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
 
-        DateFormat dateFormat = new SimpleDateFormat("yyyy-mm-dd");
-        Timestamp from = new Timestamp(dateFormat.parse("2000-12-12").getTime());
-        Timestamp to = new Timestamp(dateFormat.parse("2019-12-12").getTime());
-        String givenType = "Abandoned Vehicle Complaint";
-
-        // Query 1
-//        List<Request> results =  requestRepository.findAllByCreationDateBetweenOrderByCreationDateDesc(from,to);
-//        System.out.println("Returned " + results.size() + " results between " + from.toString() + " and " + to.toString());
-
-
-        // Query 2
-//        List<Response1> results  = requestRepository.countPerDayBetweenTimeRange(givenType,from,to);
-//        System.out.println("Returned: " + results.size());
-
+        // insert simple role
+        Role defaultRole = roleService.createDefaultRole();
+        userRegService.createDefaultUser(defaultRole);
     }
 }
