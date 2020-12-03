@@ -1,7 +1,5 @@
 package com.dit.incidents.external_request.request;
 
-import javax.persistence.Column;
-
 public class ExternalGarbageRequest extends ExternalRequest {
 
     private String currentActivity;
@@ -38,9 +36,7 @@ public class ExternalGarbageRequest extends ExternalRequest {
         this.mostRecentAction = mostRecentAction;
     }
 
-    public Long getNumOfBlackCarts() {
-        return numOfBlackCarts;
-    }
+    public Long getNumOfBlackCarts() { return numOfBlackCarts; }
 
     public void setNumOfBlackCarts(Long numOfBlackCarts) {
         this.numOfBlackCarts = numOfBlackCarts;

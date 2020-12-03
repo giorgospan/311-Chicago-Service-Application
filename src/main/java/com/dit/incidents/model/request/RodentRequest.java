@@ -1,6 +1,8 @@
 package com.dit.incidents.model.request;
 
 
+import com.dit.incidents.external_request.request.ExternalRodentRequest;
+
 import javax.persistence.*;
 
 @Entity
@@ -50,6 +52,14 @@ public class RodentRequest{
         this.premisesWithGarbage = premisesWithGarbage;
         this.premisesWithRats = premisesWithRats;
         this.request = request;
+    }
+
+    public RodentRequest(ExternalRodentRequest externalRodentRequest) {
+        this.currentActivity = externalRodentRequest.getCurrentActivity();
+        this.mostRecentAction = externalRodentRequest.getMostRecentAction();
+        this.premisesBaited = externalRodentRequest.getPremisesBaited();
+        this.premisesWithGarbage = externalRodentRequest.getPremisesWithGarbage();
+        this.premisesWithRats = externalRodentRequest.getPremisesWithRats();
     }
 
     public Long getId() {

@@ -1,5 +1,7 @@
 package com.dit.incidents.model.request;
 
+import com.dit.incidents.external_request.request.ExternalSanitationRequest;
+
 import javax.persistence.*;
 
 @Entity(name = "SANITATION_REQUEST")
@@ -25,6 +27,11 @@ public class SanitationRequest{
     public SanitationRequest(String nature, Request request) {
         this.nature = nature;
         this.request = request;
+    }
+
+    public SanitationRequest(ExternalSanitationRequest externalSanitationRequest) {
+        this.nature = externalSanitationRequest.getNature();
+
     }
 
     public Long getId() {

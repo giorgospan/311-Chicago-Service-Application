@@ -1,5 +1,7 @@
 package com.dit.incidents.model.request;
 
+import com.dit.incidents.external_request.request.ExternalVehicleRequest;
+
 import javax.persistence.*;
 
 @Entity
@@ -59,6 +61,16 @@ public class VehicleRequest{
         this.vehicleColor = vehicleColor;
         this.vehicleModel = vehicleModel;
         this.request = request;
+    }
+
+    public VehicleRequest(ExternalVehicleRequest externalVehicleRequest) {
+        this.currentActivity = externalVehicleRequest.getCurrentActivity();
+        this.recentAction = externalVehicleRequest.getRecentAction();
+        this.daysParked = externalVehicleRequest.getDaysParked();
+        this.licencePlate = externalVehicleRequest.getLicencePlate();
+        this.ssa = externalVehicleRequest.getSsa();
+        this.vehicleColor = externalVehicleRequest.getVehicleColor();
+        this.vehicleModel = externalVehicleRequest.getVehicleModel();
     }
 
     public Long getRequestId() {

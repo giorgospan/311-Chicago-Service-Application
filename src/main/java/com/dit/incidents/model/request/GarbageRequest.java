@@ -1,5 +1,6 @@
 package com.dit.incidents.model.request;
 
+import com.dit.incidents.external_request.request.ExternalGarbageRequest;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnBean;
 
 import javax.persistence.*;
@@ -46,6 +47,13 @@ public class GarbageRequest {
         this.numOfBlackCarts = numOfBlackCarts;
         this.ssa = ssa;
         this.request = request;
+    }
+
+    public GarbageRequest(ExternalGarbageRequest externalGarbageRequest) {
+        this.currentActivity = externalGarbageRequest.getCurrentActivity();
+        this.mostRecentAction = externalGarbageRequest.getMostRecentAction();
+        this.numOfBlackCarts = externalGarbageRequest.getNumOfBlackCarts();
+        this.ssa = externalGarbageRequest.getSsa();
     }
 
     public Long getId() {

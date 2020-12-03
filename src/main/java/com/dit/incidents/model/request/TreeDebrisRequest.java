@@ -1,5 +1,8 @@
 package com.dit.incidents.model.request;
 
+import com.dit.incidents.external_request.request.ExternalTreeDebrisRequest;
+import com.sun.source.tree.Tree;
+
 import javax.persistence.*;
 
 @Entity(name = "TREE_DEBRIS_REQUEST")
@@ -39,6 +42,12 @@ public class TreeDebrisRequest{
         this.mostRecentAction = mostRecentAction;
         this.debrisLocation = debrisLocation;
         this.request = request;
+    }
+
+    public TreeDebrisRequest(ExternalTreeDebrisRequest externalTreeDebrisRequest) {
+        this.currentActivity = externalTreeDebrisRequest.getCurrentActivity();
+        this.mostRecentAction = externalTreeDebrisRequest.getMostRecentAction();
+        this.debrisLocation = externalTreeDebrisRequest.getDebrisLocation();
     }
 
     public Long getId() {

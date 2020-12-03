@@ -1,6 +1,8 @@
 package com.dit.incidents.model.request;
 
 
+import com.dit.incidents.external_request.request.ExternalTreeTrimRequest;
+
 import javax.persistence.*;
 
 @Entity(name = "TREE_TRIM_REQUEST")
@@ -30,6 +32,10 @@ public class TreeTrimRequest{
     public TreeTrimRequest(String treeLocation, Request request) {
         this.treeLocation = treeLocation;
         this.request = request;
+    }
+
+    public TreeTrimRequest(ExternalTreeTrimRequest externalTreeTrimRequest) {
+        this.treeLocation = externalTreeTrimRequest.getTreeLocation();
     }
 
     public Long getId() {

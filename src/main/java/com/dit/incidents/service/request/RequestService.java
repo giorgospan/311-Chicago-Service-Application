@@ -1,5 +1,7 @@
 package com.dit.incidents.service.request;
 
+import com.dit.incidents.external_request.request.ExternalRequest;
+import com.dit.incidents.model.request.Request;
 import com.dit.incidents.repository.request.RequestRepository;
 import com.dit.incidents.response.*;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +16,11 @@ public class RequestService {
 
     @Autowired
     private RequestRepository requestRepository;
+
+    public Request insertRequest(ExternalRequest externalRequest) {
+        Request request = new Request(externalRequest);
+        return requestRepository.save(request);
+    }
 
     // Query 1
     public List<Response1> findTotalRequestsPerType(Timestamp from, Timestamp to) {

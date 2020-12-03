@@ -1,5 +1,7 @@
 package com.dit.incidents.model.request;
 
+import com.dit.incidents.external_request.request.ExternalGraffitiRequest;
+
 import javax.persistence.*;
 
 @Entity(name = "GRAFFITI_REQUEST")
@@ -39,6 +41,12 @@ public class GraffitiRequest {
 		this.graffitiSurface = graffitiSurface;
 		this.graffitiLocation = graffitiLocation;
 		this.request = request;
+	}
+
+	public GraffitiRequest(ExternalGraffitiRequest externalGraffitiRequest) {
+		this.graffitiLocation = externalGraffitiRequest.getGraffitiLocation();
+		this.graffitiSurface = externalGraffitiRequest.getGraffitiSurface();
+		this.ssa = externalGraffitiRequest.getSsa();
 	}
 
 	public Long getId() {

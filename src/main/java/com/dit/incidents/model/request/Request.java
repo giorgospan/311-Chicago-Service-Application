@@ -1,7 +1,9 @@
 package com.dit.incidents.model.request;
 
+import com.dit.incidents.external_request.request.ExternalRequest;
 import com.dit.incidents.model.auth.UserReg;
 import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.GenericGenerator;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
@@ -12,7 +14,8 @@ import java.sql.Timestamp;
 public class Request {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GenericGenerator(name = "db_gen" , strategy = "increment")
+    @GeneratedValue(generator = "db_gen")
     @Column(name = "REQUEST_ID")
     private Long id;
 
@@ -126,6 +129,26 @@ public class Request {
         this.yCoordinate = yCoordinate;
         this.latitude = latitude;
         this.longitude = longitude;
+    }
+
+    public Request(ExternalRequest externalRequest) {
+        this.status = externalRequest.getStatus();
+        this.requestNumber = externalRequest.getRequestNumber();
+        this.requestType = externalRequest.getRequestType();
+        this.streetAddress = externalRequest.getStreetAddress();
+        this.zipCode = externalRequest.getZipCode();
+        this.ward = externalRequest.getWard();
+        this.policeDistrict = externalRequest.getPoliceDistrict();
+        this.communityArea = externalRequest.getCommunityArea();
+        this.historicalWards = externalRequest.getHistoricalWards();
+        this.zipCodes = externalRequest.getZipCodes();
+        this.communityAreas = externalRequest.getCommunityAreas();
+        this.censusTracts = externalRequest.getCensusTracts();
+        this.wards = externalRequest.getWards();
+        this.xCoordinate = externalRequest.getxCoordinate();
+        this.yCoordinate = externalRequest.getyCoordinate();
+        this.latitude = externalRequest.getLatitude();
+        this.longitude = externalRequest.getLongitude();
     }
 
     public Long getId() {

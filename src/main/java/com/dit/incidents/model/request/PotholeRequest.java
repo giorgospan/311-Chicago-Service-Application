@@ -1,5 +1,7 @@
 package com.dit.incidents.model.request;
 
+import com.dit.incidents.external_request.request.ExternalPotholeRequest;
+
 import javax.persistence.*;
 
 @Entity(name = "POTHOLE_REQUEST")
@@ -44,6 +46,13 @@ public class PotholeRequest{
         this.potholesFilled = potholesFilled;
         this.ssa = ssa;
         this.request = request;
+    }
+
+    public PotholeRequest(ExternalPotholeRequest externalPotholeRequest) {
+        this.currentActivity = externalPotholeRequest.getCurrentActivity();
+        this.potholesFilled = externalPotholeRequest.getPotholesFilled();
+        this.ssa = externalPotholeRequest.getSsa();
+        this.mostRecentAction = externalPotholeRequest.getMostRecentAction();
     }
 
     public Long getId() {
