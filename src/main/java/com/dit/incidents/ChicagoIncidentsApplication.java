@@ -29,7 +29,6 @@ public class ChicagoIncidentsApplication implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-
         // insert simple role
         Role defaultRole = roleService.createDefaultRole();
         userRegService.createDefaultUser(defaultRole);
