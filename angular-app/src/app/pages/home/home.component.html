@@ -1,13 +1,18 @@
-<app-header></app-header>
-
 <!--Render welcome message-->
-<div *ngIf="isLoggedIn; else elseBlock">
-  Welcome to our service!
+<div *ngIf="isLoggedIn | async; else elseBlock">
+
+  <div class="welcome">
+    Welcome to our service!
+  </div>
+
+  <div routerLink="/profile" class='flat-button'>
+      Try it out
+  </div>
+
+
 </div>
 
 <!--Render login component-->
 <ng-template #elseBlock>
   <app-login></app-login>
 </ng-template>
-
-<app-footer></app-footer>

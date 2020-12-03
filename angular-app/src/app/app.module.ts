@@ -10,6 +10,12 @@ import { RegistrationComponent } from './pages/registration/registration.compone
 import { QueryComponent } from './pages/query/query.component';
 import { HeaderComponent } from './shared/header/header.component';
 import { FooterComponent } from './shared/footer/footer.component';
+import {RouterModule} from '@angular/router';
+import {AppRoutingModule} from './app-routing.module';
+import {FormsModule} from '@angular/forms';
+import {HttpClientModule} from '@angular/common/http';
+import {fakeBackendProvider} from './_interceptors/fake-back-end-interceptor.interceptor';
+import { ProfileComponent } from './pages/profile/profile.component';
 
 @NgModule({
   declarations: [
@@ -21,13 +27,18 @@ import { FooterComponent } from './shared/footer/footer.component';
     QueryComponent,
     HeaderComponent,
     FooterComponent,
+    ProfileComponent,
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
     AlertModule,
+    RouterModule,
+    AppRoutingModule,
+    FormsModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [fakeBackendProvider],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
