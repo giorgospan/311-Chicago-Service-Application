@@ -1,5 +1,6 @@
 package com.dit.incidents.model.log;
 
+import com.dit.incidents.enums.LogQueryType;
 import com.dit.incidents.model.auth.UserReg;
 import org.hibernate.annotations.CreationTimestamp;
 import org.springframework.format.annotation.DateTimeFormat;
@@ -28,7 +29,7 @@ public class Log {
     private UserReg userReg;
 
     @Column(name = "QUERY_TYPE")
-    private String queryType;
+    private LogQueryType queryType;
 
     @Column(name = "QUERY_PARAMETERS", columnDefinition = "TEXT")
     private String queryParameters;
@@ -36,7 +37,7 @@ public class Log {
     public Log() {
     }
 
-    public Log(Long id, Timestamp logDate, UserReg userReg, String queryType, String queryParameters) {
+    public Log(Long id, Timestamp logDate, UserReg userReg, LogQueryType queryType, String queryParameters) {
         this.id = id;
         this.logDate = logDate;
         this.userReg = userReg;
@@ -44,7 +45,7 @@ public class Log {
         this.queryParameters = queryParameters;
     }
 
-    public Log(Timestamp logDate, UserReg userReg, String queryType, String queryParameters) {
+    public Log(Timestamp logDate, UserReg userReg, LogQueryType queryType, String queryParameters) {
         this.logDate = logDate;
         this.userReg = userReg;
         this.queryType = queryType;
@@ -75,11 +76,11 @@ public class Log {
         this.userReg = userReg;
     }
 
-    public String getQueryType() {
+    public LogQueryType getQueryType() {
         return queryType;
     }
 
-    public void setQueryType(String queryType) {
+    public void setQueryType(LogQueryType queryType) {
         this.queryType = queryType;
     }
 
