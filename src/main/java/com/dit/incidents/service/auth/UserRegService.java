@@ -2,6 +2,7 @@ package com.dit.incidents.service.auth;
 
 import com.dit.incidents.enums.RoleName;
 import com.dit.incidents.exception.AppException;
+import com.dit.incidents.exception.ResourceNotFoundException;
 import com.dit.incidents.exception.UserExistsException;
 import com.dit.incidents.external_request.auth.ExternalSignInRequest;
 import com.dit.incidents.external_request.auth.ExternalSignUpRequest;
@@ -39,6 +40,9 @@ public class UserRegService {
     @Autowired
     private PasswordEncoder passwordEncoder;
 
+    public UserReg findById(Long id) {
+        return userRegRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("UserReg", "id", id));
+    }
 
     public void createDefaultUser(Role role) {
         UserReg userReg = userRegRepository.findByUsername("User1").orElse(null);

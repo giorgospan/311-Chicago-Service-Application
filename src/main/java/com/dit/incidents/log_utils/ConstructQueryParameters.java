@@ -39,7 +39,7 @@ public class ConstructQueryParameters {
         return LEFT_DELIM + FROM + from.toString() + PARAMS_SPLITTER + TO + to.toString() + RIGHT_DELIM;
     }
 
-    public static String constructParamsQuery5(Double xMin, Double yMin, Double xMax, Double yMax, Timestamp targetTm) {
+    public static String constructParamsQuery5(Double xMin, Double yMin, Double xMax, Double yMax, Date targetTm) {
         return LEFT_DELIM + X_MIN + xMin.toString() + PARAMS_SPLITTER + Y_MIN + yMin.toString() + PARAMS_SPLITTER + X_MAX + xMax.toString() +
                 PARAMS_SPLITTER + Y_MAX + yMax.toString() + PARAMS_SPLITTER + TARGET + targetTm.toString() + RIGHT_DELIM;
     }

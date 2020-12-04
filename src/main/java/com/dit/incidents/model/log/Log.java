@@ -29,6 +29,7 @@ public class Log {
     @JoinColumn(name="USER_REG_ID", nullable = true)
     private UserReg userReg;
 
+    @Enumerated(EnumType.STRING)
     @Column(name = "QUERY_TYPE")
     private LogQueryType queryType;
 
@@ -38,16 +39,7 @@ public class Log {
     public Log() {
     }
 
-    public Log(Long id, Timestamp logDate, UserReg userReg, LogQueryType queryType, String queryParameters) {
-        this.id = id;
-        this.logDate = logDate;
-        this.userReg = userReg;
-        this.queryType = queryType;
-        this.queryParameters = queryParameters;
-    }
-
-    public Log(Timestamp logDate, UserReg userReg, LogQueryType queryType, String queryParameters) {
-        this.logDate = logDate;
+    public Log(UserReg userReg, LogQueryType queryType, String queryParameters) {
         this.userReg = userReg;
         this.queryType = queryType;
         this.queryParameters = queryParameters;
