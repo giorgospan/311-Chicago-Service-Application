@@ -5,7 +5,8 @@ import com.dit.incidents.external_request.request.ExternalTreeTrimRequest;
 
 import javax.persistence.*;
 
-@Entity(name = "TREE_TRIM_REQUEST")
+@Entity
+@Table(name = "TREE_TRIM_REQUEST")
 public class TreeTrimRequest{
 
     @Id

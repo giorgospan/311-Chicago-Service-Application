@@ -5,6 +5,6 @@ package com.dit.incidents.enums;
  * We can add roles here
  */
 public enum RoleName {
-    ADMIN,
-    BASIC_ROLE;
+    ROLE_ADMIN,
+    ROLE_BASIC;
 }

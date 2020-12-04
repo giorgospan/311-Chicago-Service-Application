@@ -10,7 +10,8 @@ import javax.persistence.*;
 import java.math.BigDecimal;
 import java.sql.Timestamp;
 
-@Entity(name = "REQUEST")
+@Entity
+@Table(name = "REQUEST")
 public class Request {
 
     @Id

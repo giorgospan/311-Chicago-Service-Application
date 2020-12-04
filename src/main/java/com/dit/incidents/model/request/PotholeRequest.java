@@ -4,7 +4,8 @@ import com.dit.incidents.external_request.request.ExternalPotholeRequest;
 
 import javax.persistence.*;
 
-@Entity(name = "POTHOLE_REQUEST")
+@Entity
+@Table(name = "POTHOLE_REQUEST")
 public class PotholeRequest{
 
     @Id

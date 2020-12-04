@@ -1,4 +1,4 @@
-package com.dit.incidents.security;
+package com.dit.incidents.security.user;
 
 import com.dit.incidents.model.auth.UserReg;
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -32,14 +32,17 @@ public class UserDetailsImpl implements UserDetails {
 
     private Collection<? extends GrantedAuthority> authorities;
 
-    public UserDetailsImpl(Long id, String firstName, String lastName, String email, String username, String password, Collection<? extends GrantedAuthority> authorities) {
+    public UserDetailsImpl(Long id, String firstName, String lastName, String email, String username,
+                           String password, boolean enable, Collection<? extends GrantedAuthority> authorities) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
         this.username = username;
         this.password = password;
+        this.enabled = enable;
         this.authorities = authorities;
+
     }
 
     public static UserDetailsImpl create(UserReg user) {
@@ -48,9 +51,9 @@ public class UserDetailsImpl implements UserDetails {
         ).collect(Collectors.toList());
 
         // To Debug Roles , uncomment
-        //for (int i = 0; i < authorities.size(); i++) {
-        //    System.out.println(authorities.get(i));
-        //}
+//        for (GrantedAuthority authority : authorities) {
+//            System.out.println(authority);
+//        }
 
         return new UserDetailsImpl(
                 user.getId(),
@@ -59,6 +62,7 @@ public class UserDetailsImpl implements UserDetails {
                 user.getEmail(),
                 user.getUsername(),
                 user.getPassword(),
+                user.getEnabled(),
                 authorities
         );
     }

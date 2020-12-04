@@ -5,6 +5,7 @@ import com.dit.incidents.external_request.request.ExternalVehicleRequest;
 import javax.persistence.*;
 
 @Entity
+@Table(name = "VEHICLE_REQUEST")
 public class VehicleRequest{
 
     @Id

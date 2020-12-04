@@ -1,5 +1,8 @@
-package com.dit.incidents.security;
+package com.dit.incidents.security.config;
 
+import com.dit.incidents.security.jwt.JwtAuthenticationEntryPoint;
+import com.dit.incidents.security.jwt.JwtAuthenticationFilter;
+import com.dit.incidents.security.user.UserDetailsServiceImpl;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.BeanIds;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
@@ -17,8 +20,8 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
 
-import static com.dit.incidents.security.SecurityConstants.SIGN_IN_URL;
-import static com.dit.incidents.security.SecurityConstants.SIGN_UP_URL;
+import static com.dit.incidents.security.config.SecurityConstants.SIGN_IN_URL;
+import static com.dit.incidents.security.config.SecurityConstants.SIGN_UP_URL;
 
 @Configuration
 @EnableWebSecurity
@@ -77,9 +80,9 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                 .and()
                 .authorizeRequests()
-                //.antMatchers("/**").permitAll()
                 .antMatchers(HttpMethod.POST, SIGN_UP_URL).permitAll()
                 .antMatchers(HttpMethod.POST, SIGN_IN_URL).permitAll()
+                .antMatchers("/").permitAll()
                 .anyRequest()
                 .authenticated();
 

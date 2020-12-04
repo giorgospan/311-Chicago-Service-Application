@@ -6,6 +6,7 @@ import org.springframework.boot.autoconfigure.condition.ConditionalOnBean;
 import javax.persistence.*;
 
 @Entity
+@Table(name = "GARBAGE_REQUEST")
 public class GarbageRequest {
 
     @Id

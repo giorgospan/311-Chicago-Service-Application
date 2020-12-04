@@ -15,13 +15,13 @@ public class RoleService {
     private RoleRepository roleRepository;
 
     public Role createDefaultRole() {
-        Role searchedRole = roleRepository.findByName(RoleName.BASIC_ROLE).orElse(null);
+        Role searchedRole = roleRepository.findByName(RoleName.ROLE_BASIC).orElse(null);
         if (searchedRole != null) return searchedRole;
-        return roleRepository.save(new Role(RoleName.BASIC_ROLE));
+        return roleRepository.save(new Role(RoleName.ROLE_BASIC));
     }
 
     public Optional<Role> findByName(RoleName roleName) {
-        return findByName(roleName);
+        return roleRepository.findByName(roleName);
     }
 
 }

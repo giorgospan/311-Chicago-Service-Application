@@ -2,7 +2,8 @@ package com.dit.incidents.model.request;
 
 import javax.persistence.*;
 
-@Entity(name = "ALLEY_LIGHTS_REQUEST")
+@Entity
+@Table(name = "ALLEY_LIGHTS_REQUEST")
 public class AlleyLightsRequest {
 
 	@Id

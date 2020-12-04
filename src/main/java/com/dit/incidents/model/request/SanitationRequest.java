@@ -4,7 +4,8 @@ import com.dit.incidents.external_request.request.ExternalSanitationRequest;
 
 import javax.persistence.*;
 
-@Entity(name = "SANITATION_REQUEST")
+@Entity
+@Table(name = "SANITATION_REQUEST")
 public class SanitationRequest{
 
     @Id

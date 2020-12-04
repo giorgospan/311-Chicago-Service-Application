@@ -8,7 +8,8 @@ import org.springframework.format.annotation.DateTimeFormat;
 import javax.persistence.*;
 import java.sql.Timestamp;
 
-@Entity(name = "LOG")
+@Entity
+@Table(name = "LOG")
 public class Log {
 
     /*

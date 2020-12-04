@@ -1,4 +1,4 @@
-package com.dit.incidents.security;
+package com.dit.incidents.security.user;
 
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import java.lang.annotation.*;

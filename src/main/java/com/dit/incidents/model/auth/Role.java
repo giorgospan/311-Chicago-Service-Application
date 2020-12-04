@@ -7,7 +7,8 @@ import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
 
-@Entity(name = "ROLE")
+@Entity
+@Table(name = "ROLE")
 public class Role {
 
     @Id
@@ -15,9 +16,9 @@ public class Role {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "ROLE_NAME")
     @Enumerated(EnumType.STRING)
-    @NaturalId
+    @Column(name = "NAME")
+    //@NaturalId
     private RoleName name;
 
     @ManyToMany(mappedBy = "roles", fetch = FetchType.LAZY, cascade = {CascadeType.PERSIST, CascadeType.MERGE})

@@ -1,8 +1,7 @@
-package com.dit.incidents.security;
+package com.dit.incidents.security.user;
 
 import com.dit.incidents.model.auth.UserReg;
 import com.dit.incidents.repository.auth.UserRegRepository;
-import com.dit.incidents.service.auth.UserRegService;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;

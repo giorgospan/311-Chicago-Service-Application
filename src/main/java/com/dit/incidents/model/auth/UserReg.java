@@ -8,7 +8,15 @@ import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
 
-@Entity(name = "USER_REG")
+@Entity
+@Table(name = "USER_REG", uniqueConstraints = {
+        @UniqueConstraint(columnNames = {
+                "USERNAME"
+        }),
+        @UniqueConstraint(columnNames = {
+                "EMAIL"
+        })
+})
 public class UserReg {
 
     /*
@@ -34,6 +42,9 @@ public class UserReg {
     @Column(name = "EMAIL")
     private String email;
 
+    @Column(name = "ENABLED")
+    private Boolean enabled;
+
     @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.MERGE)
     @JoinTable(
             name = "user_roles",
@@ -49,6 +60,7 @@ public class UserReg {
     private Set<Log> logs;
 
     public UserReg() {
+        this.enabled = true;
     }
 
     public UserReg(String username) {
@@ -60,6 +72,7 @@ public class UserReg {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
+        this.enabled = true;
     }
 
     public UserReg(ExternalSignUpRequest externalSignUpRequest) {
@@ -67,6 +80,7 @@ public class UserReg {
         this.firstName = externalSignUpRequest.getFirstName();
         this.lastName = externalSignUpRequest.getLastName();
         this.email = externalSignUpRequest.getEmail();
+        this.enabled = true;
     }
 
     public Long getId() {
@@ -139,5 +153,13 @@ public class UserReg {
 
     public void setLogs(Set<Log> logs) {
         this.logs = logs;
+    }
+
+    public Boolean getEnabled() {
+        return enabled;
+    }
+
+    public void setEnabled(Boolean enabled) {
+        this.enabled = enabled;
     }
 }

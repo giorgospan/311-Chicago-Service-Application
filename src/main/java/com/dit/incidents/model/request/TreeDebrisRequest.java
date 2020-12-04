@@ -5,7 +5,8 @@ import com.sun.source.tree.Tree;
 
 import javax.persistence.*;
 
-@Entity(name = "TREE_DEBRIS_REQUEST")
+@Entity
+@Table(name = "TREE_DEBRIS_REQUEST")
 public class TreeDebrisRequest{
 
     @Id

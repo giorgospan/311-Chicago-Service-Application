@@ -6,6 +6,7 @@ import com.dit.incidents.external_request.request.ExternalRodentRequest;
 import javax.persistence.*;
 
 @Entity
+@Table(name = "RODENT_REQUEST")
 public class RodentRequest{
 
     @Id

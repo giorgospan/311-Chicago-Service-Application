@@ -9,7 +9,7 @@ import com.dit.incidents.model.auth.Role;
 import com.dit.incidents.model.auth.UserReg;
 import com.dit.incidents.repository.auth.UserRegRepository;
 import com.dit.incidents.response.auth.SignInResponse;
-import com.dit.incidents.security.JwtTokenProvider;
+import com.dit.incidents.security.jwt.JwtTokenProvider;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -63,14 +63,15 @@ public class UserRegService {
 
         UserReg userReg = new UserReg(externalSignUpRequest);
 
-        userReg.setPassword(passwordEncoder.encode(userReg.getPassword()));
+        userReg.setPassword(passwordEncoder.encode(externalSignUpRequest.getPassword()));
 
-        Role role = roleService.findByName(RoleName.BASIC_ROLE)
+        Role role = roleService.findByName(RoleName.ROLE_BASIC)
                 .orElseThrow(() -> new AppException("Basic Role not found"));
         userReg.setRoles(new HashSet<>(){{add(role);}});
+        userRegRepository.save(userReg);
     }
 
-        public SignInResponse signInUser(ExternalSignInRequest externalSignInRequest) {
+    public SignInResponse signInUser(ExternalSignInRequest externalSignInRequest) {
         // Check if the user exists
         UserReg userReg = userRegRepository.findByUsername(externalSignInRequest.getUsername()).
                 orElseThrow(() -> new AppException("Invalid username or password"));

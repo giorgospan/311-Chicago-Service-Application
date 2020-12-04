@@ -4,7 +4,8 @@ import com.dit.incidents.external_request.request.ExternalGraffitiRequest;
 
 import javax.persistence.*;
 
-@Entity(name = "GRAFFITI_REQUEST")
+@Entity
+@Table(name = "GRAFFITI_REQUEST")
 public class GraffitiRequest {
 
 	@Id
