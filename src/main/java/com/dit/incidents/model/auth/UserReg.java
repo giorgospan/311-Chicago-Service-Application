@@ -1,5 +1,6 @@
 package com.dit.incidents.model.auth;
 
+import com.dit.incidents.external_request.auth.ExternalSignUpRequest;
 import com.dit.incidents.model.log.Log;
 import com.dit.incidents.model.request.Request;
 
@@ -24,6 +25,15 @@ public class UserReg {
     @Column(name = "password")
     private String password;
 
+    @Column(name = "FIRST_NAME")
+    private String firstName;
+
+    @Column(name = "LAST_NAME")
+    private String lastName;
+
+    @Column(name = "EMAIL")
+    private String email;
+
     @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.MERGE)
     @JoinTable(
             name = "user_roles",
@@ -41,15 +51,22 @@ public class UserReg {
     public UserReg() {
     }
 
-    public UserReg(String username, String password) {
+    public UserReg(String username) {
         this.username = username;
-        this.password = password;
     }
 
-    public UserReg(String username, String password, Set<Role> roles) {
+    public UserReg(String username, String firstName, String lastName, String email) {
         this.username = username;
-        this.password = password;
-        this.roles = roles;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
+    }
+
+    public UserReg(ExternalSignUpRequest externalSignUpRequest) {
+        this.username = externalSignUpRequest.getUsername();
+        this.firstName = externalSignUpRequest.getFirstName();
+        this.lastName = externalSignUpRequest.getLastName();
+        this.email = externalSignUpRequest.getEmail();
     }
 
     public Long getId() {
@@ -90,5 +107,37 @@ public class UserReg {
 
     public void setRequests(Set<Request> requests) {
         this.requests = requests;
+    }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public Set<Log> getLogs() {
+        return logs;
+    }
+
+    public void setLogs(Set<Log> logs) {
+        this.logs = logs;
     }
 }

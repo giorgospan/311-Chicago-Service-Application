@@ -1,7 +1,7 @@
 package com.dit.incidents.repository.request;
 
 import com.dit.incidents.model.request.Request;
-import com.dit.incidents.response.*;
+import com.dit.incidents.response.search_query.*;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;

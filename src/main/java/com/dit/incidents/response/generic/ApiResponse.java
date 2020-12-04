@@ -1,4 +1,4 @@
-package com.dit.incidents.response;
+package com.dit.incidents.response.generic;
 
 /*
  * Response wrapper for the queries

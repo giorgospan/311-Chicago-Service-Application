@@ -1,4 +1,4 @@
-package com.dit.incidents.response;
+package com.dit.incidents.response.search_query;
 
 import java.util.Date;
 

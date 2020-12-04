@@ -6,6 +6,8 @@ import com.dit.incidents.repository.auth.RoleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 @Service
 public class RoleService {
 
@@ -13,9 +15,13 @@ public class RoleService {
     private RoleRepository roleRepository;
 
     public Role createDefaultRole() {
-        Role searchedRole = roleRepository.findRoleByName(RoleName.BASIC_ROLE).orElse(null);
+        Role searchedRole = roleRepository.findByName(RoleName.BASIC_ROLE).orElse(null);
         if (searchedRole != null) return searchedRole;
         return roleRepository.save(new Role(RoleName.BASIC_ROLE));
+    }
+
+    public Optional<Role> findByName(RoleName roleName) {
+        return findByName(roleName);
     }
 
 }

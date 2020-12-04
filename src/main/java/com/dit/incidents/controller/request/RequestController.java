@@ -1,7 +1,7 @@
 package com.dit.incidents.controller.request;
 
-import com.dit.incidents.external_request.request.ExternalRequest;
-import com.dit.incidents.response.*;
+import com.dit.incidents.response.generic.ApiResponse;
+import com.dit.incidents.response.search_query.*;
 import com.dit.incidents.service.request.RequestService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
