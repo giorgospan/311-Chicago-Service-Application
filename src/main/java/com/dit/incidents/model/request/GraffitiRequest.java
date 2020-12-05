@@ -21,6 +21,7 @@ public class GraffitiRequest {
 	@Column(name = "GRAFFITI_LOCATION")
     private String graffitiLocation;
 
+	//@OneToOne(fetch = FetchType.LAZY)
 	@OneToOne
 	@MapsId
 	@JoinColumn(name="REQUEST_ID")

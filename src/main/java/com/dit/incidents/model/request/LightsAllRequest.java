@@ -10,6 +10,7 @@ public class LightsAllRequest {
 	@Column(name = "LIGHTS_ALL_ID")
 	private Long id;
 
+	//@OneToOne(fetch = FetchType.LAZY)
 	@OneToOne
 	@MapsId
 	@JoinColumn(name="REQUEST_ID")

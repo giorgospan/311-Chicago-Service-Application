@@ -33,6 +33,7 @@ public class VehicleRequest{
     @Column(name = "VEHICLE_MODEL")
     private String vehicleModel;
 
+    //@OneToOne(fetch = FetchType.LAZY)
     @OneToOne
     @MapsId
     @JoinColumn(name = "REQUEST_ID")

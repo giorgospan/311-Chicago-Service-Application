@@ -16,6 +16,7 @@ public class TreeTrimRequest{
     @Column(name = "TREE_LOCATION")
     private String treeLocation;
 
+    //@OneToOne(fetch = FetchType.LAZY)
     @OneToOne
     @MapsId
     @JoinColumn(name="REQUEST_ID")

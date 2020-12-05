@@ -14,6 +14,7 @@ public class SanitationRequest{
 
     private String nature;
 
+    //@OneToOne(fetch = FetchType.LAZY)
     @OneToOne
     @MapsId
     @JoinColumn(name="REQUEST_ID")

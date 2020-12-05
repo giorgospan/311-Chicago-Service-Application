@@ -24,6 +24,7 @@ public class PotholeRequest{
     @Column(name = "SSA")
     private Integer ssa;
 
+    //@OneToOne(fetch = FetchType.LAZY)
     @OneToOne
     @MapsId
     @JoinColumn(name="REQUEST_ID")

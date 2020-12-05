@@ -25,8 +25,9 @@ public class GarbageRequest {
     @Column(name = "SSA")
     private Integer ssa;
 
+    //@OneToOne(fetch = FetchType.LAZY)
     @OneToOne
-	@MapsId
+    @MapsId
 	@JoinColumn(name="REQUEST_ID")
     private Request request;
 

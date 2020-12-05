@@ -28,6 +28,7 @@ public class RodentRequest{
     @Column(name = "PREMISES_WITH_RATS")
     private Integer premisesWithRats;
 
+    //@OneToOne(fetch = FetchType.LAZY)
     @OneToOne
     @MapsId
     @JoinColumn(name="REQUEST_ID")

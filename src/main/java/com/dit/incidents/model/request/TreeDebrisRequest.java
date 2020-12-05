@@ -22,6 +22,7 @@ public class TreeDebrisRequest{
     @Column(name = "DEBRIS_LOCATION")
     private String debrisLocation;
 
+    //@OneToOne(fetch = FetchType.LAZY)
     @OneToOne
     @MapsId
     @JoinColumn(name="REQUEST_ID")

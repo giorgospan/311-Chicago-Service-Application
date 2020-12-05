@@ -72,16 +72,20 @@ public class Request {
     @Column(name = "WARDS")
     private Integer wards;
 
-    @Column(name = "X_COORDINATE", precision = 13, scale = 17)
+    /*
+     * X.Y => X.length = 16, Y.length= 15
+     */
+
+    @Column(name = "X_COORDINATE", precision = 16, scale = 15)
     private BigDecimal xCoordinate;
 
-    @Column(name = "Y_COORDINATE", precision = 13, scale = 17)
+    @Column(name = "Y_COORDINATE", precision = 16, scale = 15)
     private BigDecimal yCoordinate;
 
-    @Column(name = "LATITUDE", precision = 20, scale = 17)
+    @Column(name = "LATITUDE", precision = 16, scale = 15)
     private BigDecimal latitude;
 
-    @Column(name = "LONGITUDE", precision = 20, scale = 17)
+    @Column(name = "LONGITUDE", precision = 16, scale = 15)
     private BigDecimal longitude;
 
     public Request() {
