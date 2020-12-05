@@ -13,9 +13,10 @@ import { FooterComponent } from './shared/footer/footer.component';
 import {RouterModule} from '@angular/router';
 import {AppRoutingModule} from './app-routing.module';
 import {FormsModule} from '@angular/forms';
-import {HttpClientModule} from '@angular/common/http';
-import {fakeBackendProvider} from './_interceptors/fake-back-end-interceptor.interceptor';
+import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import { ProfileComponent } from './pages/profile/profile.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { HttpErrorInterceptor} from './_interceptors/http-error.interceptor';
 
 @NgModule({
   declarations: [
@@ -36,9 +37,10 @@ import { ProfileComponent } from './pages/profile/profile.component';
     RouterModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    NgbModule
   ],
-  providers: [fakeBackendProvider],
+  providers: [{ provide: HTTP_INTERCEPTORS, useClass: HttpErrorInterceptor, multi: true }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

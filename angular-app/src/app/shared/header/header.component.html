@@ -1,32 +1,37 @@
-<nav class="navbar navbar-expand-lg navbar-dark">
 
-  <a class="navbar-brand" routerLink="/home">
-    <img src="/assets/images/seal_of_chicagosvg.png" width="30" height="30" class="d-inline-block align-top" alt="not found" >
-<!--    <img src="/assets/images/service_title.png" width="680" height="63" class="d-inline-block align-top" alt="not found" >-->
-    Chicago 311 Request Service
-  </a>
-
-  <div *ngIf="isLoggedIn | async; else elseBlock">
-
-
-    <ul class="navbar-nav navbar-nav ml-md-auto">
-      <li class="nav-item">
-        <button routerLink="/profile" class="btn btn-info mr-sm-4" type="submit">Profile</button>
-      </li>
-      <li class="nav-item">
-        <button (click)="logout()" class="btn btn-warning " type="submit">Log Out</button>
-      </li>
-    </ul>
-
-
-
+<nav class="navbar navbar-expand-lg navbar-light navbar-custom">
+  <div class="d-flex flex-grow-1">
+    <span class="w-509 d-lg-none d-block"><!-- hidden spacer to center brand on mobile --></span>
+    <a class="navbar-brand d-none d-lg-inline-block" routerLink="/home">
+    <img src="/assets/images/seal_of_chicagosvg.png" width="40" height="40" class=" lol d-inline-block align-top" alt="not found" >
+          Chicago 311 Request Service
+    </a>
+<!--    <a class="navbar-brand-two mx-auto d-lg-none d-inline-block" href="#">-->
+<!--      <img src="//placehold.it/40?text=LOGO" alt="logo">-->
+<!--    </a>-->
+    <div class="w-100 text-right">
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#myNavbar">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+    </div>
   </div>
 
-
+  <div *ngIf="isLoggedIn | async; else elseBlock" class="collapse navbar-collapse flex-grow-1 text-right" id="myNavbar">
+    <ul class="navbar-nav ml-auto flex-nowrap">
+      <li class="nav-item">
+        <button routerLink="/profile" class="btn btn-info m-2 menu-item" type="submit">Profile</button>
+      </li>
+      <li>
+    <button (click)="logout()" class="btn btn-warning m-2 menu-item" type="submit">Log Out</button>
+      </li>
+    </ul>
+  </div>
 
   <ng-template #elseBlock>
   </ng-template>
+
 </nav>
+
 
 
 

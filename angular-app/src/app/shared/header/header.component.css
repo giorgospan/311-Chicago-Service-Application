@@ -1,7 +1,17 @@
 .navbar {
-  background: #70a3ba;
-  border-bottom: 1px solid #dfe3e8;
+  border-bottom: 2px solid #dfe3e8;
 }
 
+.navbar-brand{
+
+  font-size: x-large;
+  font-weight: bold;
+  font-style: oblique;
+  color: whitesmoke;
+}
+
+.navbar-custom {
+  background-color: #6891A2;
+}
 
 

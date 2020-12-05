@@ -16,7 +16,7 @@ const routes: Routes = [
   { path: 'registration', component: RegistrationComponent },
   { path: 'profile', component: ProfileComponent },
   { path: 'query-selection', component: QuerySelectionComponent },
-  { path: 'query', component: QueryComponent  },
+  // { path: 'query', component: QueryComponent  },
   { path: '**', component: ErrorComponent  }
 ];
 

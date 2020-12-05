@@ -63,21 +63,6 @@ body, html {
   min-height: 1em;
 }
 
-.reauth-email {
-  display: block;
-  color: #404040;
-  line-height: 2;
-  margin-bottom: 10px;
-  font-size: 14px;
-  text-align: center;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  -moz-box-sizing: border-box;
-  -webkit-box-sizing: border-box;
-  box-sizing: border-box;
-}
-
 .form-signin #inputUsername,
 .form-signin #inputPassword {
   direction: ltr;

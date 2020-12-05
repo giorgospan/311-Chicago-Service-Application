@@ -13,6 +13,7 @@ import {User} from '../../_models/user';
 export class LoginComponent implements OnInit {
 
   loginForm: LoginRequest;
+  showErrorMessage: boolean;
 
   constructor(private router: Router,
               private authenticationService: AuthenticationService) { }
@@ -22,15 +23,16 @@ export class LoginComponent implements OnInit {
   }
 
   public login(): void {
-
+    this.showErrorMessage = false;
     const loginObserver = {
       next: user => {
         console.log('User ' + JSON.stringify(user) + ' logged in successfully !');
         this.router.navigate(['/home']);
       },
       error: err => {
-        this.router.navigate(['/lol']);
+        // this.router.navigate(['/home']);
         console.log('>>>Error: ' + err);
+        this.showErrorMessage = true;
       }
     };
 

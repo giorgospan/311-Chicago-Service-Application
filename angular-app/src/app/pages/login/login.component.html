@@ -22,5 +22,9 @@
     <a routerLink="/registration" class="create-account">
       Create Account
     </a>
+    <div *ngIf="showErrorMessage">
+      <ngb-alert type="danger" > Login Failed</ngb-alert>
+    </div>
   </div><!-- /card-container -->
 </div><!-- /container -->
+

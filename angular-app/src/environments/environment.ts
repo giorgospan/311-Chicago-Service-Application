@@ -4,11 +4,16 @@
 
 export const environment = {
   production: false,
-  serverUrl: 'http://localhost:4200/',
+  serverUrl: 'http://localhost:8080',
 
   // login-register
-  login: '/api/login',
-  register: '/api/register'
+  login: '/api/signIn',
+  register: '/api/signUp',
+
+  // query
+
+  // profile
+  profile: '/api/profile'
 };
 
 /*
