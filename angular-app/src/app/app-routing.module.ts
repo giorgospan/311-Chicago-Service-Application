@@ -5,18 +5,24 @@ import {RegistrationComponent} from './pages/registration/registration.component
 import {QueryComponent} from './pages/query/query.component';
 import {ErrorComponent} from './pages/error/error.component';
 import {LoginComponent} from './pages/login/login.component';
-import {QuerySelectionComponent} from './pages/query-selection/query-selection.component';
+import {SelectionComponent} from './pages/selection/selection.component';
 import {ProfileComponent} from './pages/profile/profile.component';
+import {AuthGuard} from './_guards/auth.guard';
+import {ResultsComponent} from './pages/results/results.component';
 
 
 const routes: Routes = [
-  { path: '', component: HomeComponent },
-  { path: 'home', component: HomeComponent },
+  { path: '', component: HomeComponent, canActivate: [AuthGuard] },
   { path: 'login', component: LoginComponent  },
   { path: 'registration', component: RegistrationComponent },
-  { path: 'profile', component: ProfileComponent },
-  { path: 'query-selection', component: QuerySelectionComponent },
-  // { path: 'query', component: QueryComponent  },
+  { path: 'profile', component: ProfileComponent, canActivate: [AuthGuard]  },
+  { path: 'selection', component: SelectionComponent, canActivate: [AuthGuard] },
+  { path: 'query/:type', component: QueryComponent,
+    canActivate: [AuthGuard],
+    children: [
+      {path: 'results', component: ResultsComponent}
+    ]
+  },
   { path: '**', component: ErrorComponent  }
 ];
 

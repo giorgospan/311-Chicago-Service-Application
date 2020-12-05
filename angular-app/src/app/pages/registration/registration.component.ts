@@ -4,6 +4,7 @@ import {Router} from '@angular/router';
 import {AuthenticationService} from '../../_services/authentication.service';
 import {LoginRequest} from '../../_requests/authentication/login-request';
 import {RegistrationRequest} from '../../_requests/authentication/registration-request';
+import {User} from '../../_models/user';
 
 @Component({
   selector: 'app-registration',
@@ -13,6 +14,7 @@ import {RegistrationRequest} from '../../_requests/authentication/registration-r
 export class RegistrationComponent implements OnInit {
 
   registrationForm: RegistrationRequest;
+  showErrorMessage = false;
 
   constructor(private router: Router,
               private authenticationService: AuthenticationService) { }
@@ -24,21 +26,16 @@ export class RegistrationComponent implements OnInit {
   public register(): void {
 
     const registerObserver = {
-      next: user => {
-        console.log('User ' + JSON.stringify(user) + ' registered successfully !');
-        this.router.navigate(['/profile']);
-      },
       error: err => {
-        this.router.navigate(['/error']);
         console.log('>>>Error: ' + err);
+        this.showErrorMessage = true;
       }
     };
 
     this.authenticationService.register(this.registrationForm)
       .pipe(first())
       .subscribe(registerObserver);
+    this.router.navigate(['/login']);
   }
-
-
 
 }

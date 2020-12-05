@@ -9,12 +9,8 @@ import {AuthenticationService} from '../../_services/authentication.service';
 })
 export class HomeComponent implements OnInit {
 
-  isLoggedIn: Observable<boolean>;
-  constructor(private authenticationService: AuthenticationService) { }
+  constructor() { }
 
   ngOnInit(): void {
-    this.isLoggedIn = this.authenticationService.isLoggedIn();
-
   }
-
 }

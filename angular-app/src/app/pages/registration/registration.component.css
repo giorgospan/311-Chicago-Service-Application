@@ -43,31 +43,11 @@ h3{
   margin-bottom: 30px;
 }
 
-/*
- * Form styles
- */
-/*.profile-name-card {*/
-/*  font-size: 16px;*/
-/*  font-weight: bold;*/
-/*  text-align: center;*/
-/*  margin: 10px 0 0;*/
-/*  !*min-height: 1em;*!*/
-/*}*/
-
-/*.reauth-email {*/
-/*  display: block;*/
-/*  color: #404040;*/
-/*  line-height: 2;*/
-/*  margin-bottom: 10px;*/
-/*  font-size: 14px;*/
-/*  text-align: center;*/
-/*  overflow: hidden;*/
-/*  text-overflow: ellipsis;*/
-/*  white-space: nowrap;*/
-/*  -moz-box-sizing: border-box;*/
-/*  -webkit-box-sizing: border-box;*/
-/*  box-sizing: border-box;*/
-/*}*/
+button:disabled{
+  border: 1px solid #999999!important;
+  background-color: #cccccc!important;
+  color: #666666!important;
+}
 
 .form-register #inputUsername,
 .form-register #inputFirstName,

@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { QuerySelectionComponent } from './query-selection.component';
+import { SelectionComponent } from './selection.component';
 
 describe('QuerySelectionComponent', () => {
-  let component: QuerySelectionComponent;
-  let fixture: ComponentFixture<QuerySelectionComponent>;
+  let component: SelectionComponent;
+  let fixture: ComponentFixture<SelectionComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ QuerySelectionComponent ]
+      declarations: [ SelectionComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(QuerySelectionComponent);
+    fixture = TestBed.createComponent(SelectionComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

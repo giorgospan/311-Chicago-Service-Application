@@ -1,0 +1,236 @@
+<h2 class="display-4">
+  Select the query you want to submit against our database
+</h2>
+
+
+<div class="container">
+  <div class="panel-group" id="accordion">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h5 class="panel-title">
+          <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
+            Query 1
+          </a>
+        </h5>
+      </div>
+      <div id="collapseOne" class="panel-collapse collapse">
+        <div class="panel-body">
+          Find the total requests per type that were created within a specified time range and sort
+          them in a descending order.
+          <a [routerLink]="['/query',1]"><fa-icon class="fa-2x" [icon]="faArrowCircleRight"></fa-icon></a>
+
+        </div>
+      </div>
+    </div>
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h5 class="panel-title">
+          <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">
+            Query 2
+          </a>
+        </h5>
+      </div>
+      <div id="collapseTwo" class="panel-collapse collapse">
+        <div class="panel-body">
+          Find the total requests per day for a specified request type and time range.
+          <a [routerLink]="['/query',2]"><fa-icon class="fa-2x" [icon]="faArrowCircleRight"></fa-icon></a>
+
+        </div>
+      </div>
+    </div>
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h5 class="panel-title">
+          <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseThree">
+            Query 3
+          </a>
+        </h5>
+      </div>
+      <div id="collapseThree" class="panel-collapse collapse">
+        <div class="panel-body">
+          Find the most common service request per zipcode for a specified day.
+          <a [routerLink]="['/query',3]"><fa-icon class="fa-2x" [icon]="faArrowCircleRight"></fa-icon></a>
+
+        </div>
+      </div>
+
+    </div>
+
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h5 class="panel-title">
+          <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseFour">
+            Query 4
+          </a>
+        </h5>
+      </div>
+      <div id="collapseFour" class="panel-collapse collapse">
+        <div class="panel-body">
+          Find the average completion time per service request for a specified date range.
+          <a [routerLink]="['/query',4]"><fa-icon class="fa-2x" [icon]="faArrowCircleRight"></fa-icon></a>
+
+        </div>
+      </div>
+
+    </div>
+
+
+
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h5 class="panel-title">
+          <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseFive">
+            Query 5
+          </a>
+        </h5>
+      </div>
+      <div id="collapseFive" class="panel-collapse collapse">
+        <div class="panel-body">
+          Find the most common service request in a specified bounding box (as designated by GPS-
+          coordinates) for a specified day.
+          <a [routerLink]="['/query',5]"><fa-icon class="fa-2x" [icon]="faArrowCircleRight"></fa-icon></a>
+
+
+        </div>
+      </div>
+
+    </div>
+
+
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h5 class="panel-title">
+          <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseSix">
+            Query 6
+          </a>
+        </h5>
+      </div>
+      <div id="collapseSix" class="panel-collapse collapse">
+        <div class="panel-body">
+          Find the top-5 Special Service Areas (SSA) with regards to total number of requests per day  for a specified date range (for service requests types that SSA is available: abandoned vehicles,
+          garbage carts, graffiti removal, pot holes reported)
+          <a [routerLink]="['/query',6]"><fa-icon class="fa-2x" [icon]="faArrowCircleRight"></fa-icon></a>
+
+        </div>
+      </div>
+
+    </div>
+
+
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h5 class="panel-title">
+          <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseSeven">
+            Query 7
+          </a>
+        </h5>
+      </div>
+      <div id="collapseSeven" class="panel-collapse collapse">
+        <div class="panel-body">
+          Find the license plates (if any) that have been involved in abandoned vehicle complaints more
+          than once.
+          <a [routerLink]="['/query',7]"><fa-icon class="fa-2x" [icon]="faArrowCircleRight"></fa-icon></a>
+
+        </div>
+      </div>
+
+    </div>
+
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h5 class="panel-title">
+          <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseEight">
+            Query 8
+          </a>
+        </h5>
+      </div>
+      <div id="collapseEight" class="panel-collapse collapse">
+        <div class="panel-body">
+          Find the second most common color of vehicles involved in abandoned vehicle complaints.
+          <a [routerLink]="['/query',8]"><fa-icon class="fa-2x" [icon]="faArrowCircleRight"></fa-icon></a>
+
+        </div>
+      </div>
+
+    </div>
+
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h5 class="panel-title">
+          <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseNine">
+            Query 9
+          </a>
+        </h5>
+      </div>
+      <div id="collapseNine" class="panel-collapse collapse">
+        <div class="panel-body">
+          Find the rodent baiting requests where the number of premises baited is less than a specified
+          number.
+          <a [routerLink]="['/query',9]"><fa-icon class="fa-2x" [icon]="faArrowCircleRight"></fa-icon></a>
+
+        </div>
+      </div>
+
+    </div>
+
+
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h5 class="panel-title">
+          <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseTen">
+            Query 10
+          </a>
+        </h5>
+      </div>
+      <div id="collapseTen" class="panel-collapse collapse">
+        <div class="panel-body">
+          Find the rodent baiting requests where the number of premises with garbage is less than a specified
+          number.
+          <a [routerLink]="['/query',10]"><fa-icon class="fa-2x" [icon]="faArrowCircleRight"></fa-icon></a>
+
+        </div>
+      </div>
+
+    </div>
+
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h5 class="panel-title">
+          <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseEleven">
+            Query 11
+          </a>
+        </h5>
+      </div>
+      <div id="collapseEleven" class="panel-collapse collapse">
+        <div class="panel-body">
+          Find the rodent baiting requests where the number of premises with rats is less than a specified
+          number.
+          <a [routerLink]="['/query',11]"><fa-icon class="fa-2x" [icon]="faArrowCircleRight"></fa-icon></a>
+
+        </div>
+      </div>
+
+    </div>
+
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h5 class="panel-title">
+          <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseTwelve">
+            Query 12
+          </a>
+        </h5>
+      </div>
+      <div id="collapseTwelve" class="panel-collapse collapse">
+        <div class="panel-body">
+          Find the police districts that have handled "pot holes" requests with more than one number
+          of potholes on the same day that they also handled "rodent baiting" requests with more than
+          one number of premises baited, for a specified day.
+          <a [routerLink]="['/query',12]"><fa-icon class="fa-2x" [icon]="faArrowCircleRight"></fa-icon></a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+
+</div>

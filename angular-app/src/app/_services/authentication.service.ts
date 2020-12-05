@@ -13,11 +13,16 @@ import {User} from '../_models/user';
 })
 export class AuthenticationService {
 
-  private loggedIn: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
+  private currentUserSubject: BehaviorSubject<User>;
+  public currentUser: Observable<User>;
 
-  constructor(private http: HttpClient, private  router: Router) {
-    if (localStorage.getItem('currentUser') != null)
-    {this.loggedIn.next(true);}
+  constructor(private http: HttpClient, private router: Router) {
+    this.currentUserSubject = new BehaviorSubject<User>(JSON.parse(localStorage.getItem('currentUser')));
+    this.currentUser = this.currentUserSubject.asObservable();
+  }
+
+  public get currentUserValue(): User {
+    return this.currentUserSubject.value;
   }
 
   login(body: LoginRequest): Observable<User> {
@@ -25,30 +30,23 @@ export class AuthenticationService {
       .pipe(map(user => {
         // store user details and jwt token in local storage to keep user logged in between page refreshes
         localStorage.setItem('currentUser', JSON.stringify(user));
-        this.loggedIn.next(true);
+        this.currentUserSubject.next(user);
         return user;
       }));
   }
 
-  register(body: RegistrationRequest): Observable<User> {
-    return this.http.post<User>(environment.serverUrl + environment.register , body)
-      .pipe(map(user => {
-        // store user details and jwt token in local storage to keep user logged in between page refreshes
-        localStorage.setItem('currentUser', JSON.stringify(user));
-        this.loggedIn.next(true);
-        return user;
-      }));
-  }
-  // tslint:disable-next-line:typedef
-  isLoggedIn() {
-    return this.loggedIn.asObservable();
+  register(body: RegistrationRequest): Observable<any> {
+    delete body.confirmPassword;
+    const s = JSON.stringify(body);
+    console.log(s);
+    return this.http.post<any>(environment.serverUrl + environment.register , body);
   }
 
   logout(): void {
     localStorage.removeItem('currentUser');
     localStorage.clear();
-    this.loggedIn.next(false);
-    this.router.navigate(['/']);
+    this.currentUserSubject.next(null);
+    this.router.navigate(['/login']);
   }
 
 

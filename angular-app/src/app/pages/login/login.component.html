@@ -1,19 +1,28 @@
 <div class="container">
   <div class="card card-container">
-    <img id="profile-img" class="profile-img-card" src="/assets/images/seal_of_chicagosvg.png" />
+    <a routerLink="">
+      <img id="profile-img" class="profile-img-card" src="/assets/images/seal_of_chicagosvg.png" />
+    </a>
     <p id="profile-name" class="profile-name-card"></p>
 
+    <form #myform="ngForm" class="form-signin" (ngSubmit)="login()">
 
-    <form class="form-signin" (ngSubmit)="login()">
-      <span id="reauth-email" class="reauth-email"></span>
-      <input type="text" [(ngModel)]="loginForm.username" id="inputUsername" class="form-control" name="username" placeholder="Username" required autofocus>
-      <input type="password" [(ngModel)]="loginForm.password" id="inputPassword" class="form-control" name="password" placeholder="Password" required>
+      <input type="text" #username="ngModel" [(ngModel)]="loginForm.username" id="username" class="form-control" name="username" placeholder="Username" required autofocus>
+      <div [hidden]="username.valid || username.pristine" class="alert alert-danger">
+        Username is required
+      </div>
+
+      <input type="password" #password="ngModel" [(ngModel)]="loginForm.password" id="inputPassword" class="form-control" name="password" placeholder="Password" required>
+      <div [hidden]="password.valid || password.pristine" class="alert alert-danger">
+        Password is required
+      </div>
+
       <div id="remember" class="checkbox">
         <label>
           <input type="checkbox" value="remember-me"> Remember me
         </label>
       </div>
-      <button class="btn btn-lg btn-primary btn-block btn-signin" type="submit" ng  >Sign in</button>
+      <button class="btn btn-lg btn-primary btn-block btn-signin" type="submit" [disabled]="!myform.form.valid">Sign in</button>
     </form>
 
     <a routerLink="/forgot-password" class="forgot-password">
@@ -23,7 +32,7 @@
       Create Account
     </a>
     <div *ngIf="showErrorMessage">
-      <ngb-alert type="danger" > Login Failed</ngb-alert>
+      <ngb-alert [dismissible]="false"  type="danger" > Login Failed</ngb-alert>
     </div>
   </div><!-- /card-container -->
 </div><!-- /container -->

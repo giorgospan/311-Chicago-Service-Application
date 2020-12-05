@@ -8,6 +8,7 @@ import {HomeComponent} from './pages/home/home.component';
 import { LoginComponent } from './pages/login/login.component';
 import { RegistrationComponent } from './pages/registration/registration.component';
 import { QueryComponent } from './pages/query/query.component';
+import { SelectionComponent} from './pages/selection/selection.component';
 import { HeaderComponent } from './shared/header/header.component';
 import { FooterComponent } from './shared/footer/footer.component';
 import {RouterModule} from '@angular/router';
@@ -17,6 +18,9 @@ import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import { ProfileComponent } from './pages/profile/profile.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { HttpErrorInterceptor} from './_interceptors/http-error.interceptor';
+import {JwtInterceptor} from './_interceptors/jwt.interceptor';
+import {FontAwesomeModule} from '@devoto13/angular-fontawesome';
+import { ResultsComponent } from './pages/results/results.component';
 
 @NgModule({
   declarations: [
@@ -26,9 +30,11 @@ import { HttpErrorInterceptor} from './_interceptors/http-error.interceptor';
     LoginComponent,
     RegistrationComponent,
     QueryComponent,
+    SelectionComponent,
     HeaderComponent,
     FooterComponent,
     ProfileComponent,
+    ResultsComponent,
   ],
   imports: [
     BrowserModule,
@@ -37,10 +43,13 @@ import { HttpErrorInterceptor} from './_interceptors/http-error.interceptor';
     RouterModule,
     AppRoutingModule,
     FormsModule,
+    FontAwesomeModule,
     HttpClientModule,
     NgbModule
   ],
-  providers: [{ provide: HTTP_INTERCEPTORS, useClass: HttpErrorInterceptor, multi: true }],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: HttpErrorInterceptor, multi: true }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
