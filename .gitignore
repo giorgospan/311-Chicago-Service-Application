@@ -37,3 +37,6 @@ build/
 /parser/*
 !/parser/*.py
 
+### Ignore node_modules directory ###
+
+/node_modules/
