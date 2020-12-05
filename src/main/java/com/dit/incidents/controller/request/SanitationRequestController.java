@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/app/request/sanitation")
+@RequestMapping("/app/request")
 public class SanitationRequestController {
 
     @Autowired
@@ -26,7 +26,7 @@ public class SanitationRequestController {
     @Autowired
     private LogService logService;
 
-    @PostMapping("/insert")
+    @PostMapping("/sanitation")
     @PreAuthorize("hasRole('BASIC')")
     public ResponseEntity<?> insertSanitationRequest(@RequestBody ExternalSanitationRequest externalSanitationRequest,
                                                      @CurrentUser UserDetailsImpl currentUser) {

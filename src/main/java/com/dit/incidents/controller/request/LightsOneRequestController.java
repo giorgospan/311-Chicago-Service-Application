@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/app/request/lightsOne")
+@RequestMapping("/app/request")
 public class LightsOneRequestController {
 
     @Autowired
@@ -26,7 +26,7 @@ public class LightsOneRequestController {
     @Autowired
     private LogService logService;
 
-    @PostMapping("/insert")
+    @PostMapping("/lightsOne")
     @PreAuthorize("hasRole('BASIC')")
     public ResponseEntity<?> insertLightsOneRequest(@RequestBody ExternalRequest externalRequest,
                                                     @CurrentUser UserDetailsImpl currentUser) {

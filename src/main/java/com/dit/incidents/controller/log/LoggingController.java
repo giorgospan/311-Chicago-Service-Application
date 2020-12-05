@@ -1,4 +1,4 @@
-package com.dit.incidents.controller.log;
+package  com.dit.incidents.controller.log;
 
 import org.springframework.web.bind.annotation.RestController;
 

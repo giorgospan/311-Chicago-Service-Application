@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/app/request/graffiti")
+@RequestMapping("/app/request")
 public class GraffitiRequestController {
 
     @Autowired
@@ -26,7 +26,7 @@ public class GraffitiRequestController {
     @Autowired
     private LogService logService;
 
-    @PostMapping("/insert")
+    @PostMapping("/graffiti")
     @PreAuthorize("hasRole('BASIC')")
     public ResponseEntity<?> insertGraffitiRequest(@RequestBody ExternalGraffitiRequest externalGraffitiRequest,
                                                    @CurrentUser UserDetailsImpl currentUser) {

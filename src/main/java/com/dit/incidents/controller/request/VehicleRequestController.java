@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/app/request/vehicle")
+@RequestMapping("/app/request")
 public class VehicleRequestController {
 
     @Autowired
@@ -26,7 +26,7 @@ public class VehicleRequestController {
     @Autowired
     private LogService logService;
 
-    @PostMapping("/insert")
+    @PostMapping("/vehicle")
     @PreAuthorize("hasRole('BASIC')")
     public ResponseEntity<?> insertVehicleRequest(@RequestBody ExternalVehicleRequest externalVehicleRequest,
                                                   @CurrentUser UserDetailsImpl currentUser) {

@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/app/request/pothole")
+@RequestMapping("/app/request")
 public class PotholeRequestController {
 
     @Autowired
@@ -26,7 +26,7 @@ public class PotholeRequestController {
     @Autowired
     private LogService logService;
 
-    @GetMapping("/insert")
+    @GetMapping("/pothole")
     @PreAuthorize("hasRole('BASIC')")
     public ResponseEntity<?> insertPotholeRequest(@RequestBody ExternalPotholeRequest externalPotholeRequest,
                                                   @CurrentUser UserDetailsImpl currentUser) {

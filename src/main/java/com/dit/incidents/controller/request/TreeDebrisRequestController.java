@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/app/request/treeDebris")
+@RequestMapping("/app/request")
 public class TreeDebrisRequestController {
 
     @Autowired
@@ -26,7 +26,7 @@ public class TreeDebrisRequestController {
     @Autowired
     private LogService logService;
 
-    @PostMapping("/insert")
+    @PostMapping("/treeDebris")
     @PreAuthorize("hasRole('BASIC')")
     public ResponseEntity<?> insertTreeDebrisRequest(@RequestBody ExternalTreeDebrisRequest externalTreeDebrisRequest,
                                                      @CurrentUser UserDetailsImpl currentUser) {

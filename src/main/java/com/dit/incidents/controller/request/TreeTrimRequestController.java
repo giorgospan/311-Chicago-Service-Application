@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/app/request/treeTrim")
+@RequestMapping("/app/request")
 public class TreeTrimRequestController {
 
     @Autowired
@@ -26,7 +26,7 @@ public class TreeTrimRequestController {
     @Autowired
     private LogService logService;
 
-    @PostMapping("/insert")
+    @PostMapping("/treeTrim")
     @PreAuthorize("hasRole('BASIC')")
     public ResponseEntity<?> insertTreeTrimRequest(@RequestBody ExternalTreeTrimRequest externalTreeTrimRequest,
                                                    @CurrentUser UserDetailsImpl currentUser) {

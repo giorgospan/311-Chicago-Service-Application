@@ -2,6 +2,7 @@ package com.dit.incidents.model.log;
 
 import com.dit.incidents.enums.LogQueryType;
 import com.dit.incidents.model.auth.UserReg;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.hibernate.annotations.CreationTimestamp;
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -25,6 +26,7 @@ public class Log {
     @CreationTimestamp
     private Timestamp logDate;
 
+    @JsonIgnore
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="USER_REG_ID", nullable = true)
     private UserReg userReg;

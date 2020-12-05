@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/app/request/rodent")
+@RequestMapping("/app/request")
 public class RodentRequestController {
 
     @Autowired
@@ -26,7 +26,7 @@ public class RodentRequestController {
     @Autowired
     private LogService logService;
 
-    @PostMapping("/insert")
+    @PostMapping("/rodent")
     @PreAuthorize("hasRole('BASIC')")
     public ResponseEntity<?> insertRodentRequest(@RequestParam ExternalRodentRequest externalRodentRequest,
                                                  @CurrentUser UserDetailsImpl currentUser) {

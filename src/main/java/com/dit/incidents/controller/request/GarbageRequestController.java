@@ -14,7 +14,7 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/app/request/garbage")
+@RequestMapping("/app/request")
 public class GarbageRequestController {
 
     @Autowired
@@ -24,7 +24,7 @@ public class GarbageRequestController {
     private LogService logService;
 
     // TODO : add logging
-    @PostMapping("/insert")
+    @PostMapping("/garbage")
     @PreAuthorize("hasRole('BASIC')")
     public ResponseEntity<?> insertGarbageRequest(@RequestBody ExternalGarbageRequest externalGarbageRequest,
                                                   @CurrentUser UserDetailsImpl currentUser) {
