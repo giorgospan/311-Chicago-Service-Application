@@ -36,4 +36,5 @@ build/
 ### Ignore everything in parser dir except for .py files ###
 /parser/*
 !/parser/*.py
+!/parser/*.sql
 

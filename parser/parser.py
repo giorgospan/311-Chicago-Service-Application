@@ -140,7 +140,7 @@ def clean(filename):
     clean.start_pos+=df.shape[0]
 
     # Make index one of the columns with name 'request_id'
-    df['request_id'] = df.index
+    df['request_id'] = df.index+1
 
     # Create csv with specific columns for this request type [i.e.: exclude common columns]
     current_df = df[df.columns[~df.columns.isin([c for c in common_columns if c != 'request_id'])]]
