@@ -38,3 +38,6 @@ build/
 !/parser/*.py
 !/parser/*.sql
 
+### Ignore node_modules directory ###
+
+/node_modules/

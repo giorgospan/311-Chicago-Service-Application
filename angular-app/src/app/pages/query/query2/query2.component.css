@@ -1,0 +1,72 @@
+.custom-day {
+  text-align: center;
+  padding: 0.185rem 0.25rem;
+  display: inline-block;
+  height: 2rem;
+  width: 2rem;
+}
+.custom-day.focused {
+  background-color: #e6e6e6;
+}
+.custom-day.range, .custom-day:hover {
+  background-color: rgb(2, 117, 216);
+  color: white;
+}
+.custom-day.faded {
+  background-color: rgba(2, 117, 216, 0.5);
+}
+
+.card{
+  align-self: center;
+}
+
+h5{
+  color: #6891A2;
+  padding-right: 10px;
+}
+
+form{
+  padding-top: 10px;
+}
+.second-form{
+  padding-right: 20px;
+}
+
+.btn-primary{
+  margin-left: 150px;
+  margin-top: 5px;
+}
+
+.btn-info{
+  margin-top: 5px;
+}
+
+.card{
+  width: 40%;
+  background-color: whitesmoke;
+  margin-top: 10px;
+}
+
+.btn{
+  background-color: #6891A2;
+  border-color: #6891A2;
+}
+
+fa-icon{
+  color: #dfe3e8;
+}
+
+table{
+  margin-top: 20px;
+  width: 20%;
+  align-self: center;
+}
+
+.table td {
+  text-align: center;
+}
+
+.table th {
+  text-align: center;
+}
+

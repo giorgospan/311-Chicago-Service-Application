@@ -1,0 +1,40 @@
+<div class="container">
+  <div class="card card-container">
+    <p id="profile-name" class="profile-name-card"></p>
+
+    <h3>Create an account</h3>
+
+    <form #myform="ngForm" class="form-register" (ngSubmit)="register()">
+      <span id="reauth-email" class="reauth-email"></span>
+
+      <input type="text" #username="ngModel" [(ngModel)]="registrationForm.username" name="username" id="inputUsername" class="form-control" placeholder="Username" required autofocus>
+      <div [hidden]="username.valid || username.pristine" class="alert alert-danger">
+        Username is required
+      </div>
+
+      <input type="text" [(ngModel)]="registrationForm.firstName" name="firstName" id="inputFirstName" class="form-control" placeholder="First Name" required autofocus>
+      <input type="text"  [(ngModel)]="registrationForm.lastName" name="lastName" id="inputLastName" class="form-control" placeholder="Last Name" required autofocus>
+
+      <input type="email" [(ngModel)]="registrationForm.email" name="email" id="inputEmail" class="form-control" placeholder="Email" required autofocus>
+
+      <input type="password" [(ngModel)]="registrationForm.password"  #password="ngModel" name="password" id="inputPassword" class="form-control" placeholder="Password" required>
+      <div [hidden]="password.valid || password.pristine" class="alert alert-danger">
+        Password is required
+      </div>
+      <input type="password" [(ngModel)]="registrationForm.confirmPassword"  id="inputConfirmPassword" class="form-control" placeholder="Confirm Password" #confirmpassword="ngModel" name="confirmpassword" pattern="{{ password.value }}" required>
+      <div *ngIf="confirmpassword.errors?.pattern && confirmpassword.touched" class="alert alert-warning">
+        Password mismatch !
+      </div>
+
+      <button class="btn btn-lg btn-primary btn-block btn-signin" type="submit" [disabled]="!myform.form.valid">Register</button>
+    </form><!-- /form -->
+    <div class="existingAccount">
+        Already have an account?   <a routerLink="/login"> Sign in </a>
+    </div>
+    <div *ngIf="showErrorMessage">
+      <ngb-alert type="danger" > Registration Failed</ngb-alert>
+    </div>
+
+  </div><!-- /card-container -->
+
+</div><!-- /container -->
