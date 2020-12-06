@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {QueryService} from '../../../_services/query.service';
+import {Response8} from '../../../_responses/response8';
 
 @Component({
   selector: 'app-query8',
@@ -8,10 +9,16 @@ import {QueryService} from '../../../_services/query.service';
 })
 export class Query8Component implements OnInit {
 
+  results: Response8[];
   constructor(private queryService: QueryService) { }
 
 
   ngOnInit(): void {
+    this.fetchResults();
   }
 
+  fetchResults(): void{
+    // this.queryService.findQuery8()
+    //   .subscribe(data => {this.results = data ; console.log(this.results); } );
+  }
 }

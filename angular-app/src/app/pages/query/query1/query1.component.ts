@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {QueryService} from '../../../_services/query.service';
-import {NgbDate} from '@ng-bootstrap/ng-bootstrap';
+import {faCalendar} from '@fortawesome/free-solid-svg-icons';
+import {Response1} from '../../../_responses/response1';
 
 @Component({
   selector: 'app-query1',
@@ -9,39 +10,22 @@ import {NgbDate} from '@ng-bootstrap/ng-bootstrap';
 })
 export class Query1Component implements OnInit {
 
-  hoveredDate: NgbDate | null = null;
+  faCalendar = faCalendar;
+  results: Response1[];
+  fromDate: Date;
+  toDate: Date;
+  page = 1;
+  pageSize = 15;
+  totalItems: number;
 
-  fromDate: NgbDate;
-  toDate: NgbDate | null = null;
-  type: string;
-  date: {year: number, month: number};
   constructor(private queryService: QueryService) { }
 
   ngOnInit(): void {
   }
 
-  onDateSelection(date: NgbDate): void {
-    if (!this.fromDate && !this.toDate) {
-      this.fromDate = date;
-    } else if (this.fromDate && !this.toDate && date.after(this.fromDate)) {
-      this.toDate = date;
-    } else {
-      this.toDate = null;
-      this.fromDate = date;
-    }
+  fetchResults(): void{
+    this.queryService.findQuery1({from: this.fromDate.toISOString(), to: this.toDate.toISOString().slice(0, 10)})
+      .subscribe(data => {this.results = data ; console.log(this.results); } );
   }
 
-  // tslint:disable-next-line:typedef
-  isHovered(date: NgbDate) {
-    return this.fromDate && !this.toDate && this.hoveredDate && date.after(this.fromDate) && date.before(this.hoveredDate);
-  }
-
-  // tslint:disable-next-line:typedef
-  isInside(date: NgbDate) {
-    return this.toDate && date.after(this.fromDate) && date.before(this.toDate);
-  }
-
-  isRange(date: NgbDate) {
-    return date.equals(this.fromDate) || (this.toDate && date.equals(this.toDate)) || this.isInside(date) || this.isHovered(date);
-  }
 }

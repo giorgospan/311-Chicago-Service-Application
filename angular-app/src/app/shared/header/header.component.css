@@ -14,6 +14,6 @@
   background-color: #6891A2;
 }
 
-fa-icon{
-  /*color: green;*/
+a:hover{
+  color: whitesmoke !important;
 }
