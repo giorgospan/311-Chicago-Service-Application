@@ -57,5 +57,6 @@ $func$  LANGUAGE plpgsql;
 
 CREATE EXTENSION IF NOT EXISTS postgis
     SCHEMA public
-    VERSION '3.0.2';
+--- commenting the following line because it may result to errors
+---    VERSION '3.0.2';
 
