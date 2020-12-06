@@ -11,11 +11,25 @@ export const environment = {
   register: '/signUp',
 
   // query
-  stuff: '/stuff',
+  query1: '/query1',
+  query2: '/query2',
+  query3: '/query3',
+  query4: '/query4',
+  query5: '/query5',
+  query6: '/query6',
+  query7: '/query7',
+  query8: '/query8',
+  query9: '/query9',
+  query10: '/query10',
+  query11: '/query11',
+  query12: '/query12',
 
   // profile
   profile: '/profile',
-  logs: '/logs'
+  logs: '/logs',
+
+  // testing
+  stuff: '/stuff',
 };
 
 /*

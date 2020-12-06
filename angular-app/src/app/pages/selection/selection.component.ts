@@ -9,7 +9,7 @@ import {faArrowCircleRight} from '@fortawesome/free-solid-svg-icons';
 })
 export class SelectionComponent implements OnInit {
   faArrowCircleRight = faArrowCircleRight;
-  constructor(private router: Router) { }
+  constructor() { }
 
   ngOnInit(): void {
   }

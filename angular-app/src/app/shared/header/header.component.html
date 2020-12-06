@@ -19,10 +19,15 @@
   <div *ngIf="currentUser" class="collapse navbar-collapse flex-grow-1 text-right" id="myNavbar">
     <ul class="navbar-nav ml-auto flex-nowrap">
       <li class="nav-item">
+        <a routerLink="/insert">
+        <button class="btn btn-success m-2 menu-item" type="submit"><fa-icon class="fa-lg" [icon]="faPlusCircle"></fa-icon></button>
+        </a>
+      </li>
+      <li class="nav-item">
         <button routerLink="/profile" class="btn btn-info m-2 menu-item" type="submit">Profile</button>
       </li>
-      <li>
-    <button (click)="logout()" class="btn btn-warning m-2 menu-item" type="submit">Log Out</button>
+      <li class="nav-item">
+        <button (click)="logout()" class="btn btn-warning m-2 menu-item" type="submit">Log Out</button>
       </li>
     </ul>
   </div>

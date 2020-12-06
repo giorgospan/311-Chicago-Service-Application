@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { QueryComponent } from './query.component';
+import { Query4Component } from './query4.component';
 
-describe('QueryComponent', () => {
-  let component: QueryComponent;
-  let fixture: ComponentFixture<QueryComponent>;
+describe('Query4Component', () => {
+  let component: Query4Component;
+  let fixture: ComponentFixture<Query4Component>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ QueryComponent ]
+      declarations: [ Query4Component ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(QueryComponent);
+    fixture = TestBed.createComponent(Query4Component);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

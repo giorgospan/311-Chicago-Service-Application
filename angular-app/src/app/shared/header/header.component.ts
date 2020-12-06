@@ -3,6 +3,7 @@ import {AuthenticationService} from '../../_services/authentication.service';
 import {Router} from '@angular/router';
 import {Observable} from 'rxjs';
 import {User} from '../../_models/user';
+import {faPlusCircle} from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-header',
@@ -11,6 +12,7 @@ import {User} from '../../_models/user';
 })
 export class HeaderComponent implements OnInit {
 
+  faPlusCircle = faPlusCircle;
   currentUser: User;
 
   constructor(private authenticationService: AuthenticationService) {
