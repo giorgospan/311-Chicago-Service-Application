@@ -23,6 +23,7 @@ import java.util.List;
  */
 @RestController
 @RequestMapping("/app")
+@CrossOrigin
 public class RequestController {
 
     @Autowired

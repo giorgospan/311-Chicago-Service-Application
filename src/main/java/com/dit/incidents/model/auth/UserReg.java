@@ -27,10 +27,10 @@ public class UserReg {
     @Column(name = "USER_REG_ID")
     private Long id;
 
-    @Column(name = "USERNAME")
+    @Column(name = "USERNAME", nullable = false)
     private String username;
 
-    @Column(name = "password")
+    @Column(name = "password", nullable = false)
     private String password;
 
     @Column(name = "FIRST_NAME")
@@ -39,7 +39,7 @@ public class UserReg {
     @Column(name = "LAST_NAME")
     private String lastName;
 
-    @Column(name = "EMAIL")
+    @Column(name = "EMAIL", nullable = false)
     private String email;
 
     @Column(name = "ENABLED")

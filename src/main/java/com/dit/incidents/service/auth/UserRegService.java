@@ -90,7 +90,7 @@ public class UserRegService {
         SecurityContextHolder.getContext().setAuthentication(authentication);
         String jwt = tokenProvider.generateToken(authentication);
 
-        return new SignInResponse(jwt, userReg.getUsername(), userReg.getEmail(), userReg.getFirstName(), userReg.getLastName());
+        return new SignInResponse(userReg.getId(), jwt, userReg.getUsername(), userReg.getEmail(), userReg.getFirstName(), userReg.getLastName());
     }
 
 }

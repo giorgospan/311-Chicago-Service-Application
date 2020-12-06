@@ -2,6 +2,8 @@ package com.dit.incidents.response.auth;
 
 public class SignInResponse {
 
+    private Long id;
+
     private String jwt;
 
     private String username;
@@ -12,7 +14,17 @@ public class SignInResponse {
 
     private String lastName;
 
+
     public SignInResponse() {
+    }
+
+    public SignInResponse(Long id, String jwt, String username, String email, String firstName, String lastName) {
+        this.id = id;
+        this.jwt = jwt;
+        this.username = username;
+        this.email = email;
+        this.firstName = firstName;
+        this.lastName = lastName;
     }
 
     public SignInResponse(String jwt, String username, String email, String firstName, String lastName) {
@@ -61,5 +73,13 @@ public class SignInResponse {
 
     public void setLastName(String lastName) {
         this.lastName = lastName;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 }

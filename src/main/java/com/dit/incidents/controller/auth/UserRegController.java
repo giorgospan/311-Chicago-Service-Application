@@ -7,13 +7,11 @@ import com.dit.incidents.response.generic.ApiResponse;
 import com.dit.incidents.service.auth.UserRegService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/app")
+@CrossOrigin
 public class UserRegController {
 
     @Autowired
@@ -28,6 +26,7 @@ public class UserRegController {
     @PostMapping("/signIn")
     public ResponseEntity<?> signIn(@RequestBody ExternalSignInRequest externalSignInRequest) {
         SignInResponse signInResponse = userRegService.signInUser(externalSignInRequest);
-        return ResponseEntity.ok(new ApiResponse(true, "Sign In succeed", signInResponse));
+        return ResponseEntity.ok(signInResponse);
+//        return ResponseEntity.ok(new ApiResponse(true, "Sign In succeed", signInResponse));
     }
 }
