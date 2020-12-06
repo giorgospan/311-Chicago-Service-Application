@@ -32,6 +32,7 @@ import { Query9Component } from './pages/query/query9/query9.component';
 import { Query10Component } from './pages/query/query10/query10.component';
 import { Query11Component } from './pages/query/query11/query11.component';
 import { Query12Component } from './pages/query/query12/query12.component';
+import { SearchComponent } from './pages/search/search.component';
 
 
 @NgModule({
@@ -58,6 +59,7 @@ import { Query12Component } from './pages/query/query12/query12.component';
     Query10Component,
     Query11Component,
     Query12Component,
+    SearchComponent,
   ],
   imports: [
     BrowserModule,

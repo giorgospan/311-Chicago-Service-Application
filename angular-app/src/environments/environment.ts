@@ -28,6 +28,11 @@ export const environment = {
   profile: '/profile',
   logs: '/logs',
 
+  // search
+  searchByZipCode: '/queryZipCode',
+  searchByAddress: '/queryStreetAddress',
+
+
   // testing
   stuff: '/stuff',
 };

@@ -20,6 +20,7 @@ import {Query9Component} from './pages/query/query9/query9.component';
 import {Query10Component} from './pages/query/query10/query10.component';
 import {Query11Component} from './pages/query/query11/query11.component';
 import {Query12Component} from './pages/query/query12/query12.component';
+import {SearchComponent} from './pages/search/search.component';
 
 
 const routes: Routes = [
@@ -28,6 +29,7 @@ const routes: Routes = [
   { path: 'registration', component: RegistrationComponent },
   { path: 'profile', component: ProfileComponent, canActivate: [AuthGuard]  },
   { path: 'insert', component: InsertComponent, canActivate: [AuthGuard] },
+  { path: 'search', component: SearchComponent, canActivate: [AuthGuard] },
   { path: 'selection', component: SelectionComponent, canActivate: [AuthGuard] },
   { path: 'query1', component: Query1Component, canActivate: [AuthGuard] },
   { path: 'query2', component: Query2Component, canActivate: [AuthGuard] },

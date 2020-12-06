@@ -1,0 +1,52 @@
+<!--Radio Buttons-->
+<div class="col d-flex justify-content-center">
+  <div class="card">
+    <div class="card-body">
+      <h5> Select one of the following </h5>
+      <div class="form-check">
+        <input class="form-check-input" [(ngModel)]="mode" type="radio" name="zipRadio" id="exampleRadios1" value="zip" checked>
+        <label class="form-check-label" for="exampleRadios1">
+          ZIP Code
+        </label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" [(ngModel)]="mode" type="radio" name="addressRadio" id="exampleRadios2" value="address">
+        <label class="form-check-label" for="exampleRadios2">
+          Street Address
+        </label>
+      </div>
+
+      <div *ngIf="mode=='zip'" style="padding-top: 10px">
+        <h6>Enter a ZIP code</h6>
+        <div class="form-group">
+          <div class="input-group">
+            <input name="searchValue" [(ngModel)]="searchValue" type="text" class="form-control" >
+          </div>
+        </div>
+      </div>
+      <div *ngIf="mode=='address'" style="padding-top: 10px">
+        <h6>Enter a Street address</h6>
+      <div class="form-group">
+        <div class="input-group">
+          <input name="searchValue" [(ngModel)]="searchValue" type="text" class="form-control" >
+        </div>
+      </div>
+      </div>
+      <a routerLink="/selection" class="btn btn-info  float-left">Back</a>
+      <a (click)="searchValue()" class="btn btn-primary  float-right">Search</a>
+
+    </div>
+  </div>
+</div>
+
+<!--Form-->
+<!--<div class="col d-flex justify-content-center">-->
+
+<!--<form class="form-inline">-->
+<!--  <h5>Number of Premises</h5>-->
+<!--</form>-->
+<!--<a routerLink="" class="btn btn-info  float-left">Back</a>-->
+<!--<a (click)="search()" class="btn btn-primary  float-right">Search</a>-->
+
+
+<!--</div>-->

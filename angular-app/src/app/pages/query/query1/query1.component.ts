@@ -12,8 +12,8 @@ export class Query1Component implements OnInit {
 
   faCalendar = faCalendar;
   results: Response1[];
-  fromDate: Date;
-  toDate: Date;
+  fromDate;
+  toDate;
   page = 1;
   pageSize = 15;
   totalItems: number;
@@ -24,8 +24,10 @@ export class Query1Component implements OnInit {
   }
 
   fetchResults(): void{
-    this.queryService.findQuery1({from: this.fromDate.toISOString(), to: this.toDate.toISOString().slice(0, 10)})
-      .subscribe(data => {this.results = data ; console.log(this.results); } );
+    const jsDate = new Date(this.fromDate.year, this.fromDate.month - 1, this.fromDate.day);
+    console.log(jsDate.toISOString());
+    // this.queryService.findQuery1({from: '321321', to: '3213132131'})
+    //   .subscribe(data => {this.results = data ; console.log(this.results); } );
   }
 
 }

@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {AuthenticationService} from '../../_services/authentication.service';
-import {Router} from '@angular/router';
-import {Observable} from 'rxjs';
 import {User} from '../../_models/user';
 import {faPlusCircle} from '@fortawesome/free-solid-svg-icons';
+import {faSearch} from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-header',
@@ -12,6 +11,7 @@ import {faPlusCircle} from '@fortawesome/free-solid-svg-icons';
 })
 export class HeaderComponent implements OnInit {
 
+  faSearch = faSearch;
   faPlusCircle = faPlusCircle;
   currentUser: User;
 

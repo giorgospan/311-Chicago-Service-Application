@@ -10,6 +10,7 @@ import {Response8} from '../../../_responses/response8';
 export class Query8Component implements OnInit {
 
   results: Response8[];
+  mostCommonColor;
   constructor(private queryService: QueryService) { }
 
 
@@ -18,7 +19,7 @@ export class Query8Component implements OnInit {
   }
 
   fetchResults(): void{
-    // this.queryService.findQuery8()
-    //   .subscribe(data => {this.results = data ; console.log(this.results); } );
+    this.queryService.findQuery8()
+      .subscribe(data => {this.mostCommonColor = data[0].color} );
   }
 }
