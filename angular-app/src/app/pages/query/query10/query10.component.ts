@@ -12,17 +12,22 @@ export class Query10Component implements OnInit {
   results: Response10[];
   numOfPremises: number;
   page = 1;
-  pageSize = 15;
+  pageSize = 10;
+  pageSizeOptions = [10, 20, 30, 100];
   totalItems: number;
   constructor(private queryService: QueryService) { }
 
 
   ngOnInit(): void {
+    this.results = [];
   }
 
   fetchResults(): void{
     this.queryService.findQuery10({targetNum: this.numOfPremises})
       .subscribe(data => {this.results = data ; console.log(this.results); } );
+  }
+  handlePageSizeChange(event): void {
+    this.pageSize = event.target.value;
   }
 
 

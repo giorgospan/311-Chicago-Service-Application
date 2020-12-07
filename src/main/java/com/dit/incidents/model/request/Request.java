@@ -42,7 +42,7 @@ public class Request {
     @Column(name = "REQUEST_TYPE")
     private String requestType;
 
-    @Column(name = "STREAT_ADDRESS")
+    @Column(name = "STREET_ADDRESS")
     private String streetAddress;
 
     @Column(name = "ZIP_CODE")

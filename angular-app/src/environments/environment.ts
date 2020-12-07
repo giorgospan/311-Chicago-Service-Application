@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  serverUrl: 'http://localhost:8080/api',
+  serverUrl: 'http://localhost:8080/app',
 
   // login-register
   login: '/signIn',
@@ -23,6 +23,20 @@ export const environment = {
   query10: '/query10',
   query11: '/query11',
   query12: '/query12',
+
+  // insert
+  insertUrl: '/request',
+  alleyLights: '/alleyLights',
+  garbage: '/garbage',
+  graffiti: '/graffiti',
+  lightsAll: '/lightsAll',
+  lightsOne: '/lightsOne',
+  pothole: '/pothole',
+  rodent: '/rodent',
+  sanitation: '/sanitation',
+  treeDebris: '/treeDebris',
+  treeTrim: '/treeTrim',
+  vehicle: '/vehicle',
 
   // profile
   profile: '/profile',

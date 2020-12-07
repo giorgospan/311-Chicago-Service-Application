@@ -2,7 +2,6 @@ package com.dit.incidents.controller.request;
 
 import com.dit.incidents.enums.LogQueryType;
 import com.dit.incidents.log_utils.ConstructQueryParameters;
-import com.dit.incidents.response.generic.ApiResponse;
 import com.dit.incidents.response.search_query.*;
 import com.dit.incidents.security.user.CurrentUser;
 import com.dit.incidents.security.user.UserDetailsImpl;
@@ -14,8 +13,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
-import java.sql.Timestamp;
-import java.sql.Date;
+import java.util.Date;
 import java.util.List;
 
 /*
@@ -23,7 +21,6 @@ import java.util.List;
  */
 @RestController
 @RequestMapping("/app")
-@CrossOrigin
 public class RequestController {
 
     @Autowired
@@ -40,12 +37,13 @@ public class RequestController {
      */
     @GetMapping("/query1")
     @PreAuthorize("hasRole('BASIC')")
-    public ResponseEntity<?> query1(@RequestParam("from") @DateTimeFormat(pattern="yyyy-MM-dd HH:mm:ss") Timestamp from,
-                                    @RequestParam("to")   @DateTimeFormat(pattern="yyyy-MM-dd HH:mm:ss") Timestamp to,
+    public ResponseEntity<?> query1(@RequestParam("from") @DateTimeFormat(pattern="yyyy-MM-dd") Date from,
+                                    @RequestParam("to") @DateTimeFormat(pattern="yyyy-MM-dd") Date to,
                                     @CurrentUser UserDetailsImpl currentUser) {
         List<Response1> response1List = requestService.findTotalRequestsPerType(from, to);
         logService.insertLog(currentUser.getId(), LogQueryType.QUERY1, ConstructQueryParameters.constructParamsQuery1(from, to));
-        return ResponseEntity.ok().body(new ApiResponse(true, "Query 1 succeed", response1List));
+        return ResponseEntity.ok(response1List);
+//        return ResponseEntity.ok().body(new ApiResponse(true, "Query 1 succeed", response1List));
     }
 
     /*
@@ -55,12 +53,13 @@ public class RequestController {
     @GetMapping("/query2")
     @PreAuthorize("hasRole('BASIC')")
     public ResponseEntity<?> query2(@RequestParam("type") String type,
-                                    @RequestParam("from") @DateTimeFormat(pattern="yyyy-MM-dd HH:mm:ss") Timestamp from,
-                                    @RequestParam("to")   @DateTimeFormat(pattern="yyyy-MM-dd HH:mm:ss") Timestamp to,
+                                    @RequestParam("from") @DateTimeFormat(pattern="yyyy-MM-dd") Date from,
+                                    @RequestParam("to")   @DateTimeFormat(pattern="yyyy-MM-dd") Date to,
                                     @CurrentUser UserDetailsImpl currentUser) {
         List<Response2> response2List = requestService.findTotalRequestsPerDayBetweenTimeRange(type, from, to);
         logService.insertLog(currentUser.getId(), LogQueryType.QUERY2, ConstructQueryParameters.constructParamsQuery2(type, from, to));
-        return ResponseEntity.ok(new ApiResponse(true, "Query 2 succeed", response2List));
+        return ResponseEntity.ok(response2List);
+//        return ResponseEntity.ok(new ApiResponse(true, "Query 2 succeed", response2List));
     }
 
     /*
@@ -69,11 +68,12 @@ public class RequestController {
      */
     @GetMapping("/query3")
     @PreAuthorize("hasRole('BASIC')")
-    public ResponseEntity<?> query3(@RequestParam("targetTm") @DateTimeFormat(pattern="yyyy-MM-dd HH:mm:ss") Timestamp targetTm,
+    public ResponseEntity<?> query3(@RequestParam("targetTm") @DateTimeFormat(pattern="yyyy-MM-dd") Date targetTm,
                                     @CurrentUser UserDetailsImpl currentUser) {
         List<Response3> response3List = requestService.findMostCommonTypePerZipCode(targetTm);
         logService.insertLog(currentUser.getId(), LogQueryType.QUERY3, ConstructQueryParameters.constructParamsQuery3(targetTm));
-        return ResponseEntity.ok(new ApiResponse(true, "Query 3 succeed", response3List));
+        return ResponseEntity.ok(response3List);
+//        return ResponseEntity.ok(new ApiResponse(true, "Query 3 succeed", response3List));
     }
 
     /*
@@ -82,12 +82,13 @@ public class RequestController {
      */
     @GetMapping("/query4")
     @PreAuthorize("hasRole('BASIC')")
-    public ResponseEntity<?> query4(@RequestParam("from") @DateTimeFormat(pattern="yyyy-MM-dd HH:mm:ss") Timestamp from,
-                                    @RequestParam("to")   @DateTimeFormat(pattern="yyyy-MM-dd HH:mm:ss") Timestamp to,
+    public ResponseEntity<?> query4(@RequestParam("from") @DateTimeFormat(pattern="yyyy-MM-dd") Date from,
+                                    @RequestParam("to")   @DateTimeFormat(pattern="yyyy-MM-dd") Date to,
                                     @CurrentUser UserDetailsImpl currentUser) {
         List<Response4> response4List = requestService.findAvgCompletionTimePerType(from, to);
         logService.insertLog(currentUser.getId(), LogQueryType.QUERY4, ConstructQueryParameters.constructParamsQuery4(from, to));
-        return ResponseEntity.ok(new ApiResponse(true, "Query 4 succeed", response4List));
+        return ResponseEntity.ok(response4List);
+//        return ResponseEntity.ok(new ApiResponse(true, "Query 4 succeed", response4List));
     }
 
     /*
@@ -99,11 +100,12 @@ public class RequestController {
     @PreAuthorize("hasRole('BASIC')")
     public ResponseEntity<?> query5(@RequestParam("xMin") Double xMin, @RequestParam("yMin") Double yMin,
                                     @RequestParam("xMax") Double xMax, @RequestParam("yMax") Double yMax,
-                                    @RequestParam("targetDt") Date targetDt,
+                                    @RequestParam("targetDt") @DateTimeFormat(pattern="yyyy-MM-dd") Date targetDt,
                                     @CurrentUser UserDetailsImpl currentUser) {
         List<Response5> response5List = requestService.findMostCommonTypeInBoundingBox(xMin, yMin, xMax, yMax, targetDt);
         logService.insertLog(currentUser.getId(), LogQueryType.QUERY5, ConstructQueryParameters.constructParamsQuery5(xMin, yMin, xMax, yMax, targetDt));
-        return ResponseEntity.ok(new ApiResponse(true, "Query 5 succeed", response5List));
+        return ResponseEntity.ok(response5List);
+//        return ResponseEntity.ok(new ApiResponse(true, "Query 5 succeed", response5List));
     }
 
     /*
@@ -114,12 +116,13 @@ public class RequestController {
      */
     @GetMapping("/query6")
     @PreAuthorize("hasRole('BASIC')")
-    public ResponseEntity<?> query6(@RequestParam("from") @DateTimeFormat(pattern="yyyy-MM-dd HH:mm:ss") Timestamp from,
-                                    @RequestParam("to")   @DateTimeFormat(pattern="yyyy-MM-dd HH:mm:ss") Timestamp to,
+    public ResponseEntity<?> query6(@RequestParam("from") @DateTimeFormat(pattern="yyyy-MM-dd") Date from,
+                                    @RequestParam("to")   @DateTimeFormat(pattern="yyyy-MM-dd") Date to,
                                     @CurrentUser UserDetailsImpl currentUser) {
         List<Response6> response6List = requestService.findTopFiveSsaPerDay(from, to);
         logService.insertLog(currentUser.getId(), LogQueryType.QUERY6, ConstructQueryParameters.constructParamsQuery6(from, to));
-        return ResponseEntity.ok(new ApiResponse(true, "Query 6 succeed", response6List));
+        return ResponseEntity.ok(response6List);
+//        return ResponseEntity.ok(new ApiResponse(true, "Query 6 succeed", response6List));
     }
 
     /*
@@ -131,7 +134,8 @@ public class RequestController {
     public ResponseEntity<?> query7(@CurrentUser UserDetailsImpl currentUser) {
         List<Response7> response7List = requestService.findLicencePlates();
         logService.insertLog(currentUser.getId(), LogQueryType.QUERY7, ConstructQueryParameters.constructParamsQuery7());
-        return ResponseEntity.ok(new ApiResponse(true, "Query 7 succeed", response7List));
+        return ResponseEntity.ok(response7List);
+//        return ResponseEntity.ok(new ApiResponse(true, "Query 7 succeed", response7List));
     }
 
     /*
@@ -143,7 +147,8 @@ public class RequestController {
     public ResponseEntity<?> query8(@CurrentUser UserDetailsImpl currentUser) {
         List<Response8> response8List = requestService.findSecondMostCommonColor();
         logService.insertLog(currentUser.getId(), LogQueryType.QUERY8, ConstructQueryParameters.constructParamsQuery8());
-        return ResponseEntity.ok(new ApiResponse(true, "Query 8 succeed", response8List));
+        return ResponseEntity.ok(response8List);
+//        return ResponseEntity.ok(new ApiResponse(true, "Query 8 succeed", response8List));
     }
 
     /*
@@ -155,7 +160,8 @@ public class RequestController {
     public ResponseEntity<?> query9(@RequestParam("targetNum") Integer targetNum, @CurrentUser UserDetailsImpl currentUser) {
         List<Response9> response9List = requestService.findRodentRequestsBaited(targetNum);
         logService.insertLog(currentUser.getId(), LogQueryType.QUERY9, ConstructQueryParameters.constructParamsQuery9(targetNum));
-        return ResponseEntity.ok(new ApiResponse(true, "Query 9 succeed", response9List));
+        return ResponseEntity.ok(response9List);
+//        return ResponseEntity.ok(new ApiResponse(true, "Query 9 succeed", response9List));
     }
 
     /*
@@ -168,7 +174,8 @@ public class RequestController {
                                      @CurrentUser UserDetailsImpl currentUser) {
         List<Response10> response10List = requestService.findRodentRequestsGarbage(targetNum);
         logService.insertLog(currentUser.getId(), LogQueryType.QUERY10, ConstructQueryParameters.constructParamsQuery10(targetNum));
-        return ResponseEntity.ok(new ApiResponse(true, "Query 10 succeed", response10List));
+        return ResponseEntity.ok(response10List);
+//        return ResponseEntity.ok(new ApiResponse(true, "Query 10 succeed", response10List));
     }
 
     /*
@@ -181,7 +188,8 @@ public class RequestController {
                                      @CurrentUser UserDetailsImpl currentUser) {
         List<Response11> response11List = requestService.findRodentRequestsRats(targetNum);
         logService.insertLog(currentUser.getId(), LogQueryType.QUERY11, ConstructQueryParameters.constructParamsQuery11(targetNum));
-        return ResponseEntity.ok(new ApiResponse(true, "Query 11 succeed", response11List));
+        return ResponseEntity.ok(response11List);
+//        return ResponseEntity.ok(new ApiResponse(true, "Query 11 succeed", response11List));
     }
 
     /*
@@ -192,33 +200,36 @@ public class RequestController {
      */
     @GetMapping("/query12")
     @PreAuthorize("hasRole('BASIC')")
-    public ResponseEntity<?> query12(@RequestParam("targetDt") Date targetDt,
+    public ResponseEntity<?> query12(@RequestParam("targetDt") @DateTimeFormat(pattern="yyyy-MM-dd") Date targetDt,
                                      @CurrentUser UserDetailsImpl currentUser) {
         List<Response12> response12List = requestService.findPoliceDistricts(targetDt);
         logService.insertLog(currentUser.getId(), LogQueryType.QUERY12, ConstructQueryParameters.constructParamsQuery12(targetDt));
-        return ResponseEntity.ok(new ApiResponse(true, "Query 12 succeed", response12List));
+        return ResponseEntity.ok(response12List);
+//        return ResponseEntity.ok(new ApiResponse(true, "Query 12 succeed", response12List));
     }
 
-    /* TODO
-     * Specific zip-code
+    /*
+     * Search for Specific zip-code
      */
     @GetMapping("/queryZipCode")
     @PreAuthorize("hasRole('BASIC')")
     public ResponseEntity<?> queryZipCode(@RequestParam("zipCode") String zipCode,
                                           @CurrentUser UserDetailsImpl currentUser) {
+        List<ResponseSearch> zipResponseList = requestService.findByZipCode(zipCode);
         logService.insertLog(currentUser.getId(), LogQueryType.QUERY_ZIP_CODE, ConstructQueryParameters.constructParamsQueryZipCode(zipCode));
-        return null;
+        return ResponseEntity.ok(zipResponseList);
     }
 
-    /* TODO
-     * Specific street
+    /*
+     * Search for a specific street address
      */
     @GetMapping("/queryStreetAddress")
     @PreAuthorize("hasRole('BASIC')")
     public ResponseEntity<?> queryStreetAddress(@RequestParam("streetAddress") String streetAddress,
                                                 @CurrentUser UserDetailsImpl currentUser) {
+        List<ResponseSearch> searchResponseList = requestService.findByStreetAddress(streetAddress);
         logService.insertLog(currentUser.getId(), LogQueryType.QUERY_STREET_ADDRESS, ConstructQueryParameters.constructParamsQueryStreetAddress(streetAddress));
-        return null;
+        return ResponseEntity.ok(searchResponseList);
     }
 
 }

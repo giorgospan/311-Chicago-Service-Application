@@ -50,6 +50,7 @@ public class UserRegService {
         userReg = new UserReg();
         userReg.setRoles(new HashSet<>(){{add(role);}});
         userReg.setUsername("User1");
+        userReg.setEmail("user1@gmail.com");
         userReg.setPassword(passwordEncoder.encode("pass"));
         userRegRepository.save(userReg);
     }

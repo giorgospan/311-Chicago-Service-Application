@@ -7,7 +7,6 @@ import com.dit.incidents.response.search_query.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.sql.Timestamp;
 import java.util.Date;
 import java.util.List;
 
@@ -23,22 +22,22 @@ public class RequestService {
     }
 
     // Query 1
-    public List<Response1> findTotalRequestsPerType(Timestamp from, Timestamp to) {
+    public List<Response1> findTotalRequestsPerType(Date from, Date to) {
         return requestRepository.findTotalRequestsPerType(from, to);
     }
 
     // Query 2
-    public List<Response2> findTotalRequestsPerDayBetweenTimeRange(String type, Timestamp from, Timestamp to) {
+    public List<Response2> findTotalRequestsPerDayBetweenTimeRange(String type, Date from, Date to) {
         return requestRepository.findTotalRequestsPerDayBetweenTimeRange(type, from, to);
     }
 
     // Query 3
-    public List<Response3> findMostCommonTypePerZipCode(Timestamp targetTm) {
+    public List<Response3> findMostCommonTypePerZipCode(Date targetTm) {
         return requestRepository.findMostCommonTypePerZipCode(targetTm);
     }
 
     // Query 4
-    public List<Response4> findAvgCompletionTimePerType(Timestamp from, Timestamp to) {
+    public List<Response4> findAvgCompletionTimePerType(Date from, Date to) {
         return requestRepository.findAvgCompletionTimePerType(from, to);
     }
 
@@ -48,7 +47,7 @@ public class RequestService {
     }
 
     // Query 6
-    public List<Response6> findTopFiveSsaPerDay(Timestamp from, Timestamp to) {
+    public List<Response6> findTopFiveSsaPerDay(Date from, Date to) {
         return requestRepository.findTopFiveSsaPerDay(from, to);
     }
 
@@ -80,6 +79,16 @@ public class RequestService {
     //Query 12
     public List<Response12> findPoliceDistricts(Date targetDt) {
         return requestRepository.findPoliceDistricts(targetDt);
+    }
+
+    // Search by ZIP Code
+    public List<ResponseSearch> findByZipCode(String zipCode) {
+        return requestRepository.searchByZipCode(zipCode);
+    }
+
+    // Search by Street Address
+    public List<ResponseSearch> findByStreetAddress(String streetAddress) {
+        return requestRepository.searchByStreetAddress(streetAddress);
     }
 
 }

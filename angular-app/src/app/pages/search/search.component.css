@@ -33,21 +33,3 @@ form{
   background-color: #6891A2;
   border-color: #6891A2;
 }
-
-fa-icon{
-  color: #dfe3e8;
-}
-
-table{
-  margin-top: 20px;
-  width: 20%;
-  align-self: center;
-}
-
-.table td {
-  text-align: center;
-}
-
-.table th {
-  text-align: center;
-}

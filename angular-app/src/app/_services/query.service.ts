@@ -15,6 +15,8 @@ import {Response4} from '../_responses/response4';
 import {Response5} from '../_responses/response5';
 import {Response3} from '../_responses/response3';
 import {Response2} from '../_responses/response2';
+import {SearchResponse} from '../_responses/search-response';
+import {IncidentRequest} from '../_requests/incident-request';
 
 @Injectable({
   providedIn: 'root'
@@ -120,4 +122,81 @@ export class QueryService {
         return values;
       }));
   }
+
+  search(mode, searchvalue): Observable<SearchResponse[]> {
+    if (mode === 'zip') {
+      return this.findByZipCode({zipCode: searchvalue});
+    } else {
+      return this.findByStreetAddress({streetAddress: searchvalue});
+    }
+  }
+
+  findByZipCode(params): Observable<SearchResponse[]> {
+    return this.http.get<SearchResponse[]>(environment.serverUrl + environment.searchByZipCode , {params})
+      .pipe(map(values => {
+        return values;
+      }));
+  }
+
+  findByStreetAddress(params): Observable<SearchResponse[]> {
+    return this.http.get<SearchResponse[]>(environment.serverUrl + environment.searchByAddress , {params})
+      .pipe(map(values => {
+        return values;
+      }));
+  }
+
+  insert(type, body): Observable<any> {
+
+    let url = environment.serverUrl + environment.insertUrl;
+    switch (type) {
+
+      case 'Abandoned Vehicle Complaint':
+        url = url + environment.vehicle;
+        break;
+
+      case 'Garbage Cart Black Maintenance/Replacement':
+        url = url + environment.garbage;
+        break;
+
+      case 'Alley Light Out':
+        url = url + environment.alleyLights;
+        break;
+
+      case  'Graffiti Removal':
+        url = url + environment.graffiti;
+        break;
+
+      case  'Pothole in Street':
+        url = url + environment.pothole;
+        break;
+
+      case  'Rodent Baiting/Rat Complaint':
+        url = url + environment.rodent;
+        break;
+
+      case  'Sanitation Code Violation':
+        url = url + environment.sanitation;
+        break;
+
+      case  'Street Light - 1/Out':
+        url = url + environment.lightsOne;
+        break;
+
+      case  'Street Lights - All/Out':
+        url = url + environment.lightsAll;
+        break;
+
+      case  'Tree Debris':
+        url = url + environment.treeDebris;
+        break;
+
+      case  'Tree Trim':
+        url = url + environment.treeTrim;
+        break;
+
+    }
+    console.log(JSON.stringify(body));
+    return this.http.post<IncidentRequest>(url , body);
+  }
+
 }

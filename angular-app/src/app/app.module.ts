@@ -33,6 +33,7 @@ import { Query10Component } from './pages/query/query10/query10.component';
 import { Query11Component } from './pages/query/query11/query11.component';
 import { Query12Component } from './pages/query/query12/query12.component';
 import { SearchComponent } from './pages/search/search.component';
+import {NgxPaginationModule} from 'ngx-pagination';
 
 
 @NgModule({
@@ -61,17 +62,18 @@ import { SearchComponent } from './pages/search/search.component';
     Query12Component,
     SearchComponent,
   ],
-  imports: [
-    BrowserModule,
-    BrowserAnimationsModule,
-    AlertModule,
-    RouterModule,
-    AppRoutingModule,
-    FormsModule,
-    FontAwesomeModule,
-    HttpClientModule,
-    NgbModule,
-  ],
+    imports: [
+        BrowserModule,
+        BrowserAnimationsModule,
+        AlertModule,
+        RouterModule,
+        AppRoutingModule,
+        FormsModule,
+        FontAwesomeModule,
+        HttpClientModule,
+        NgbModule,
+        NgxPaginationModule,
+    ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: HttpErrorInterceptor, multi: true }],

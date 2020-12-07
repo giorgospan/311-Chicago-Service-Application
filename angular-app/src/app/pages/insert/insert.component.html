@@ -1,1 +1,120 @@
-<p>insert works!</p>
+<div class="col d-flex justify-content-center" *ngIf="!submitted">
+
+  <form #myform="ngForm" (ngSubmit)="insert()">
+
+    <div class="form-group">
+      <label for="requestType">Request Type</label>
+      <select id="requestType" [(ngModel)]="incidentForm.requestType" class="form-control" name="requestType" required>
+        <option *ngFor="let opt of options" [value]="opt">{{opt.toString()}}</option>
+      </select>
+    </div>
+
+
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label for="latitude">Latitude</label>
+        <input type="text" class="form-control" id="latitude" name="latitude" [(ngModel)]="incidentForm.latitude" required>
+      </div>
+      <div class="form-group col-md-6">
+        <label for="longitude">Longitude</label>
+        <input type="text" class="form-control" id="longitude" name="longitude" [(ngModel)]="incidentForm.longitude" required>
+      </div>
+    </div>
+
+
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label for="streetAddress">Street Address</label>
+        <input type="text" class="form-control" id="streetAddress" name="streetAddress" [(ngModel)]="incidentForm.streetAddress" required>
+      </div>
+      <div class="form-group col-md-6">
+        <label for="zipCode">Zip Code</label>
+        <input type="text" class="form-control" id="zipCode" name="zipCode" [(ngModel)]="incidentForm.zipCode" required>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label for="communityArea">Community Area</label>
+        <input type="text" class="form-control" id="communityArea" name="communityArea" [(ngModel)]="incidentForm.communityArea">
+      </div>
+      <div class="form-group col-md-2">
+        <label for="ward">Ward</label>
+        <input type="text" class="form-control" id="ward" name="ward" [(ngModel)]="incidentForm.ward">
+      </div>
+      <div class="form-group col-md-2">
+        <label for="policeDistrict">Police District</label>
+        <input type="text" class="form-control" id="policeDistrict" [(ngModel)]="incidentForm.policeDistrict" name="policeDistrict">
+      </div>
+    </div>
+
+    <div *ngIf="incidentForm.requestType == 'Abandoned Vehicle Complaint'">
+
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          <label for="plate">Licence Place</label>
+          <input type="text" class="form-control" id="plate" name="plate" [(ngModel)]="incidentForm.licencePlate">
+        </div>
+        <div class="form-group col-md-2">
+          <label for="color">Color</label>
+          <input type="text" class="form-control" id="color" name="color" [(ngModel)]="incidentForm.vehicleColor">
+        </div>
+        <div class="form-group col-md-2">
+          <label for="model">Model</label>
+          <input type="text" class="form-control" id="model" [(ngModel)]="incidentForm.vehicleModel" name="model">
+        </div>
+      </div>
+      <div class="form-group col-md-2">
+        <label for="ssa">SSA</label>
+        <input type="text" class="form-control" id="ssa" [(ngModel)]="incidentForm.ssa" name="ssa">
+      </div>
+    </div>
+
+    <div *ngIf="incidentForm.requestType == 'Garbage Cart Black Maintenance/Replacement'">
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          <label for="numOfBlackCarts"> Number of Black Carts </label>
+          <input type="text" class="form-control" id="numOfBlackCarts" name="numOfBlackCarts" [(ngModel)]="incidentForm.numOfBlackCarts">
+        </div>
+    </div>
+    </div>
+
+    <div *ngIf="incidentForm.requestType == 'Graffiti Removal'">
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          <label for="graffitiSurface">Graffiti Surface</label>
+          <input type="text" class="form-control" id="graffitiSurface" name="graffitiSurface" [(ngModel)]="incidentForm.graffitiSurface" >
+        </div>
+        <div class="form-group col-md-6">
+          <label for="graffitiLocation">Graffiti Location</label>
+          <input type="text" class="form-control" id="graffitiLocation" name="graffitiLocation" [(ngModel)]="incidentForm.graffitiLocation">
+        </div>
+      </div>
+    </div>
+
+    <div *ngIf="incidentForm.requestType == 'Pothole in Street'">
+      <div class="form-row">
+        <div class="form-group col-md-2">
+          <label for="ssaPothole">SSA</label>
+          <input type="text" class="form-control" id="ssaPothole" [(ngModel)]="incidentForm.ssa" name="ssaPothole">
+        </div>
+      </div>
+    </div>
+    <button type="submit" class="btn btn-primary" [disabled]="!myform.form.valid"> Submit  </button>
+  </form>
+
+</div>
+
+<div style="padding-top: 20px" class="col d-flex justify-content-center" >
+
+  <div *ngIf="showSuccessMessage ">
+    <ngb-alert [dismissible]="false" type="success"> Successful submission</ngb-alert>
+    <a  style="padding-top: 10px"  routerLink="" class="btn btn-primary"> Home </a>
+  </div>
+
+  <div *ngIf="showErrorMessage ">
+      <ngb-alert [dismissible]="true"  type="danger" > Submission Failed</ngb-alert>
+  </div>
+
+</div>
+

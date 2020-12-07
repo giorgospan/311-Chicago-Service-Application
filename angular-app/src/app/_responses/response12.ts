@@ -1,3 +1,3 @@
 export class Response12 {
-  requestId: string;
+  policeDistrict: string;
 }

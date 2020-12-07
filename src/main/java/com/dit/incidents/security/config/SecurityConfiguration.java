@@ -61,15 +61,16 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
         return new BCryptPasswordEncoder();
     }
 
+
     // Defines which resources are public and which are secured
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
+                .cors()
+                .and()
                 .headers()
                 .frameOptions()
                 .sameOrigin()
-                .and()
-                .cors()
                 .and()
                 .csrf()
                 .disable()

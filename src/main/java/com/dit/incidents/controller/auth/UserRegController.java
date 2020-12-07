@@ -7,11 +7,14 @@ import com.dit.incidents.response.generic.ApiResponse;
 import com.dit.incidents.service.auth.UserRegService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.core.userdetails.User;
 import org.springframework.web.bind.annotation.*;
+
+import java.security.Principal;
 
 @RestController
 @RequestMapping("/app")
-@CrossOrigin
 public class UserRegController {
 
     @Autowired

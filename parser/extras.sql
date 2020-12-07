@@ -46,9 +46,9 @@ BEGIN
         select * from(
 
                          select cte.ssa, date(cte.creation_date),
-                                rank() OVER (PARTITION BY date(cte.creation_date)  ORDER BY count(cte.request_id) DESC) as ranking
+                                rank() OVER (PARTITION BY cte.creation_date  ORDER BY count(cte.request_id) DESC) as ranking
                          from cte
-                         group by cte.ssa, date(cte.creation_date)
+                         group by cte.ssa, cte.creation_date
                      )as t
         where t.ranking<=5;
 

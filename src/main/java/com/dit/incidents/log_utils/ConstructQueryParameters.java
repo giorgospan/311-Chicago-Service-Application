@@ -1,7 +1,6 @@
 package com.dit.incidents.log_utils;
 
-import java.sql.Date;
-import java.sql.Timestamp;
+import java.util.Date;
 
 // Note: this implementation is not the best, we can do it dynamically and adaptive
 public class ConstructQueryParameters {
@@ -23,19 +22,19 @@ public class ConstructQueryParameters {
     static final String ZIP_CODE = "zipCode:";
     static final String STREET_ADDRESS = "streetAddress:";
 
-    public static String constructParamsQuery1(Timestamp from, Timestamp to) {
+    public static String constructParamsQuery1(Date from, Date to) {
         return LEFT_DELIM + FROM + from.toString() + PARAMS_SPLITTER + TO + to.toString() + RIGHT_DELIM;
     }
 
-    public static String constructParamsQuery2(String givenType, Timestamp from, Timestamp to) {
+    public static String constructParamsQuery2(String givenType, Date from, Date to) {
         return LEFT_DELIM + GIVEN_TYPE + givenType + PARAMS_SPLITTER + FROM + from.toString() + PARAMS_SPLITTER + TO + to.toString() + RIGHT_DELIM;
     }
 
-    public static String constructParamsQuery3(Timestamp targetTm) {
+    public static String constructParamsQuery3(Date targetTm) {
         return LEFT_DELIM + TARGET + targetTm.toString() + RIGHT_DELIM;
     }
 
-    public static String constructParamsQuery4(Timestamp from, Timestamp to) {
+    public static String constructParamsQuery4(Date from, Date to) {
         return LEFT_DELIM + FROM + from.toString() + PARAMS_SPLITTER + TO + to.toString() + RIGHT_DELIM;
     }
 
@@ -44,7 +43,7 @@ public class ConstructQueryParameters {
                 PARAMS_SPLITTER + Y_MAX + yMax.toString() + PARAMS_SPLITTER + TARGET + targetTm.toString() + RIGHT_DELIM;
     }
 
-    public static String constructParamsQuery6(Timestamp from, Timestamp to) {
+    public static String constructParamsQuery6(Date from, Date to) {
         return LEFT_DELIM + FROM + from.toString() + PARAMS_SPLITTER + TO + to.toString() + RIGHT_DELIM;
     }
 

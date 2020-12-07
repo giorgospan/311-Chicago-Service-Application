@@ -31,6 +31,7 @@ export class AuthenticationService {
         // store user details and jwt token in local storage to keep user logged in between page refreshes
         localStorage.setItem('currentUser', JSON.stringify(user));
         this.currentUserSubject.next(user);
+        console.log(user.jwt);
         return user;
       }));
   }
@@ -38,7 +39,6 @@ export class AuthenticationService {
   register(body: RegistrationRequest): Observable<any> {
     delete body.confirmPassword;
     const s = JSON.stringify(body);
-    console.log(s);
     return this.http.post<any>(environment.serverUrl + environment.register , body);
   }
 

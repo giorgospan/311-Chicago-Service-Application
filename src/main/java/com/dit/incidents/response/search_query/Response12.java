@@ -2,5 +2,5 @@ package com.dit.incidents.response.search_query;
 
 public interface Response12 {
 
-    Long getRequestId();
+    Long getPoliceDistrict();
 }

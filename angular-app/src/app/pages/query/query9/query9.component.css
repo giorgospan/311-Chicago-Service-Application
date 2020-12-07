@@ -1,12 +1,7 @@
-.card{
-  align-self: center;
-}
-
 h5{
   color: #6891A2;
   padding-right: 10px;
 }
-
 form{
   padding-top: 10px;
 }
@@ -23,31 +18,11 @@ form{
   margin-top: 5px;
 }
 
-.card{
-  width: 40%;
-  background-color: whitesmoke;
-  margin-top: 10px;
-}
 
-table{
-  margin-top: 20px;
-  width: 20%;
-  align-self: center;
-}
-
-.table td {
-  text-align: center;
-}
-
-.table th {
-  text-align: center;
-}
 
 .btn{
   background-color: #6891A2;
   border-color: #6891A2;
 }
 
-fa-icon{
-  color: #dfe3e8;
-}
+

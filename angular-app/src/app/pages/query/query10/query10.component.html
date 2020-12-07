@@ -1,6 +1,6 @@
 <!--Form-->
 <div class="col d-flex justify-content-center">
-  <div class="card">
+  <div class="card query-card">
     <div class="card-body">
       <h5 class="card-title">Query 10</h5>
 
@@ -25,18 +25,40 @@
     <thead>
     <tr>
       <th scope="col"> Request Id </th>
+      <th scope="col"> Premises with Garbage </th>
     </tr>
     </thead>
     <tbody>
-    <tr *ngFor="let res of results | slice: (page-1) * pageSize : page * pageSize">
+    <tr     *ngFor="let res of results | paginate: {
+              id: 'listing_pagination',
+              itemsPerPage: pageSize,
+              currentPage: page,
+              totalItems: results.length
+            }"
+    >
       <td>{{res.requestId}}</td>
+      <td>{{res.premisesWithGarbage}}</td>
     </tr>
     </tbody>
   </table>
   <div>
   </div>
 </div>
-
 <div class="col d-flex justify-content-center">
-  <ngb-pagination [collectionSize]=totalItems [pageSize]="50" [(page)]="page" aria-label="Default pagination"></ngb-pagination>
+  <pagination-controls
+    id="listing_pagination"
+    previousLabel="Prev"
+    nextLabel="Next"
+    responsive="true"
+    (pageChange)="page = $event"
+  ></pagination-controls>
+</div>
+
+<div class="mt-3 col d-flex justify-content-center">
+  Items per Page:
+  <select (change)="handlePageSizeChange($event)">
+    <option *ngFor="let size of pageSizeOptions" [ngValue]="size">
+      {{ size }}
+    </option>
+  </select>
 </div>

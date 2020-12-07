@@ -11,12 +11,10 @@ import com.dit.incidents.service.request.PotholeRequestService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
+@CrossOrigin
 @RequestMapping("/app/request")
 public class PotholeRequestController {
 
@@ -26,7 +24,7 @@ public class PotholeRequestController {
     @Autowired
     private LogService logService;
 
-    @GetMapping("/pothole")
+    @PostMapping("/pothole")
     @PreAuthorize("hasRole('BASIC')")
     public ResponseEntity<?> insertPotholeRequest(@RequestBody ExternalPotholeRequest externalPotholeRequest,
                                                   @CurrentUser UserDetailsImpl currentUser) {

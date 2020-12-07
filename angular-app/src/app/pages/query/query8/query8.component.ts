@@ -16,10 +16,11 @@ export class Query8Component implements OnInit {
 
   ngOnInit(): void {
     this.fetchResults();
+    this.results = [];
   }
 
   fetchResults(): void{
     this.queryService.findQuery8()
-      .subscribe(data => {this.mostCommonColor = data[0].color} );
+      .subscribe(data => {this.mostCommonColor = data[0].color; } );
   }
 }
